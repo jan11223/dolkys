@@ -1,46 +1,113 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje první webová stránka</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #2196f3;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #ddd;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roblox Komunita</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('https://wallpapercave.com/wp/wp7462433.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      color: #fff;
+      z-index: 1;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .button {
+      padding: 15px 30px;
+      font-size: 1.3em;
+      color: white;
+      background: linear-gradient(45deg, #00aaff, #004466);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #00ffaa, #006644);
+    }
+
+    .gallery {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .gallery img {
+      width: 150px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Vítej na mé stránce!</h1>
-    </header>
-    <main>
-        <h2>O mně</h2>
-        <p>Ahoj! Tohle je moje úplně první webová stránka. Vytvořil jsem ji pomocí HTML a trochu vylepšil pomocí CSS.</p>
+  <div class="background-overlay"></div>
+  <header>
+    <h1>Vítej na Roblox komunitní stránce</h1>
+  </header>
 
-        <h2>Kontakt</h2>
-        <p>Email: <a href="mailto:nekdo@example.com">nekdo@example.com</a></p>
-    </main>
-    <footer>
-        &copy; 2025 Moje jméno
-    </footer>
+  <main class="menu">
+    <a href="#informace" class="button">📘 Informace</a>
+    <a href="#pravidla" class="button">📜 Pravidla</a>
+    <a href="#ateam" class="button">👥 A-Team</a>
+    <a href="#nabor" class="button">📝 Nábor do A-Teamu</a>
+    <a href="#reporty" class="button">🚨 Reports</a>
+  </main>
+
+  <section class="gallery">
+    <img src="https://tr.rbxcdn.com/7e6d85762ef48b23a5e875e5a36596a9/420/420/Hat/Png" alt="Roblox skin 1" />
+    <img src="https://tr.rbxcdn.com/84485a826780df963c0a0db440a1a9b6/420/420/Hat/Png" alt="Roblox skin 2" />
+  </section>
 </body>
 </html>
