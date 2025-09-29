@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vesnický fotbal — Reels & perličky z amatérů</title>
+<meta name="description" content="Vesnický fotbal bez cenzury — Reels co ti vystřelí kopačky. Fotbal + pivo a klobása = životní styl. Posílej nám videa!" />
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style>
+  :root{
+    --bg:#0b1020;
+    --card:#0f1724;
+    --accent:#f1c40f;
+    --muted:#9aa4b2;
+    --glass: rgba(255,255,255,0.03);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.02), transparent),
+                radial-gradient(900px 400px at 90% 90%, rgba(241,196,15,0.03), transparent),
+                var(--bg);
+    color:#e6eef8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  .container{max-width:1100px;margin:32px auto;padding:24px;}
+
+  header{
+    display:flex;align-items:center;gap:16px;justify-content:space-between;
+  }
+  .brand{
+    display:flex;align-items:center;gap:14px;
+  }
+  .logo{
+    width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#0f1724,#172033);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+    box-shadow:0 6px 20px rgba(0,0,0,0.6);
+    font-size:20px;
+  }
+  h1{margin:0;font-size:20px}
+  p.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+  .cta{
+    display:flex;gap:10px;align-items:center;
+  }
+  .btn{
+    background:linear-gradient(90deg,var(--accent), #ff9f1c);
+    color:#08101a;padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer;
+    box-shadow:0 6px 18px rgba(241,196,15,0.12);
+    text-decoration:none;
+  }
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(241,196,15,0.12)}
+  main{margin-top:28px;display:grid;grid-template-columns:1fr 360px;gap:22px}
+  @media (max-width:920px){ main{grid-template-columns:1fr} .container{padding:16px} }
+
+  /* left content */
+  .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);}
+  .hero{
+    display:flex;gap:18px;align-items:center;
+  }
+  .avatar{
+    width:110px;height:110px;border-radius:12px;background:linear-gradient(180deg,#132033,#0b1220);
+    display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--accent);
+  }
+  .meta small{color:var(--muted);display:block}
+  .stats{display:flex;gap:12px;margin-top:12px}
+  .stat{background:var(--glass);padding:10px;border-radius:10px;text-align:center;min-width:96px}
+  .stat strong{display:block;font-size:18px}
+  h2.section{margin-top:18px;margin-bottom:12px}
+
+  /* gallery */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media (max-width:640px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  .post{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    padding:10px;border-radius:10px;min-height:100px;display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .18s ease, box-shadow .18s ease; text-decoration:none;color:inherit;
+  }
+  .post:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+  .post .thumb{height:120px;border-radius:8px;background:linear-gradient(90deg,#0e1a2a,#132033);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted)}
+  .post small{color:var(--muted);margin-top:8px;display:block}
+
+  /* sidebar */
+  aside .card{position:sticky;top:24px}
+  .subscribe{display:flex;gap:8px;margin-top:12px}
+  input[type="email"]{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+  footer{text-align:center;color:var(--muted);margin-top:26px;font-size:13px}
+  .tag{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:12px;color:var(--muted);display:inline-block}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">VF</div>
+        <div>
+          <h1>Vesnický fotbal <span class="tag">@vesnickyy_fotbal</span></h1>
+          <p class="lead">Vesnický fotbal bez cenzury — Reels, co ti vystřelí kopačky.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="https://www.instagram.com/vesnickyy_fotbal/" target="_blank" rel="noopener">Sleduj na Instagramu</a>
+        <a class="btn ghost" href="#contact">Poslat video</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- content -->
+      <section>
+        <div class="card hero">
+          <div class="avatar">⚽️</div>
+          <div>
+            <div class="meta">
+              <strong>Vesnický fotbal</strong>
+              <small>Fotbal + pivo a klobása = životní styl</small>
+            </div>
+
+            <div class="stats" aria-hidden="true">
+              <div class="stat"><small>Odhad sledujících</small><strong>~14.5K</strong></div>
+              <div class="stat"><small>Příspěvků (Reels)</small><strong>Reels &amp; videa</strong></div>
+              <div class="stat"><small>Kontakt</small><strong>vesnickyy.fotbal@seznam.cz</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section">O profilu</h2>
+        <div class="card">
+          <p>
+            Tento profil sdílí nejlepší momenty z amatérského a vesnického fotbalu — vtipné situace, nečekané góly a pozvánky na zápasy.
+            Máš video nebo fotku? Pošli nám ji přes formulář níže nebo na e-mail <a href="mailto:vesnickyy.fotbal@seznam.cz">vesnickyy.fotbal@seznam.cz</a>.
+          </p>
+        </div>
+
+        <h2 class="section">Ukázkové Reels / videa</h2>
+        <div class="card">
+          <div class="grid">
+            <!-- 6 ukázkových odkazů; lze rozšířit -->
+            <a class="post" href="https://www.instagram.com/reel/DN0LbEz2FVQ/" target="_blank" rel="noopener">
+              <div class="thumb">Reel 1</div>
+              <small>Video — fanouškovský záznam (otevřít na IG).</small>
+            </a>
+
+            <a class="post" href="https://www.instagram.com/reel/DFiv-hztzJh/" target="_blank" rel="noopener">
+              <div class="thumb">Reel 2</div>
+              <small>Méně vídaná situace z 8. ligy.</small>
+            </a>
+
+            <a class="post" href="https://www.instagram.com/reel/DE76WwONCI3/" target="_blank" rel="noopener">
+              <div class="thumb">Reel 3</div>
+              <small>Ukázka parádního zákroku / momentu.</small>
+            </a>
+
+            <a class="post" href="https://www.instagram.com/reel/DCEjW4Qt7lL/" target="_blank" rel="noopener">
+              <div class="thumb">Reel 4</div>
+              <small>Soutěžní příspěvek / zapojení fanoušků.</small>
+            </a>
+
+            <a class="post" href="https://www.instagram.com/p/DOjJbqQDIeN/" target="_blank" rel="noopener">
+              <div class="thumb">Post</div>
+              <small>Fotka / příspěvek z profilu.</small>
+            </a>
+
+            <a class="post" href="https://www.instagram.com/reel/DJ9oPD0ISer/" target="_blank" rel="noopener">
+              <div class="thumb">Reel 5</div>
+              <small>Další momenty z amatérského fotbalu.</small>
+            </a>
+          </div>
+        </div>
+
+        <h2 class="section" id="contact">Poslat video / kontakt</h2>
+        <div class="card">
+          <p>Rychlé posílání — formulář ti otevře e-mail s předvyplněným předmětem a textem. Do těla zprávy přidej odkaz k videu nebo přilož soubor.</p>
+
+          <form id="sendForm" onsubmit="return sendMail(event)" style="display:flex;flex-direction:column;gap:10px">
+            <input type="text" id="name" placeholder="Tvoje jméno (nepovinné)" />
+            <input type="email" id="email" placeholder="Tvůj e-mail (nepovinné)" />
+            <input type="text" id="videoUrl" placeholder="Odkaz na video (Instagram / YouTube / Drive)" required />
+            <textarea id="message" placeholder="Krátký popis (kde a kdy bylo natočeno)..." rows="4" style="resize:vertical;padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:inherit"></textarea>
+
+            <div style="display:flex;gap:8px">
+              <button class="btn" type="submit">Odeslat e-mailem</button>
+              <a class="btn ghost" href="mailto:vesnickyy.fotbal@seznam.cz?subject=Pos%C3%ADl%C3%A1m%20video%20-%20Vesnick%C3%BD%20fotbal" target="_blank" rel="noopener">Poslat klasickým mailem</a>
+            </div>
+          </form>
+
+          <script>
+            function sendMail(e){
+              e.preventDefault();
+              const name = encodeURIComponent(document.getElementById('name').value || 'Nezadáno');
+              const from = encodeURIComponent(document.getElementById('email').value || 'Nezadáno');
+              const url = encodeURIComponent(document.getElementById('videoUrl').value);
+              const msg = encodeURIComponent(document.getElementById('message').value || '');
+              const subject = encodeURIComponent('Video pro Vesnický fotbal — zaslal: ' + (name !== 'Nezadáno' ? name : from));
+              const body = encodeURIComponent('Odkaz na video: ' + url + '\\n\\nPoznámka:\\n' + msg + '\\n\\nKontaktní e-mail: ' + from + '\\n\\nPosláno z webu: vesnickyy_fotbal');
+              const mailto = 'mailto:vesnickyy.fotbal@seznam.cz?subject=' + subject + '&body=' + body;
+              window.location.href = mailto;
+              return false;
+            }
+          </script>
+        </div>
+
+      </section>
+
+      <!-- sidebar -->
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0">Rychlé odkazy</h3>
+          <p class="lead" style="margin:8px 0 0">Sleduj, pošli video nebo napiš přímo na e-mail.</p>
+
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+            <a class="btn" href="https://www.instagram.com/vesnickyy_fotbal/" target="_blank" rel="noopener">Instagram profil</a>
+            <a class="btn ghost" href="mailto:vesnickyy.fotbal@seznam.cz">Napsat e-mail</a>
+          </div>
+
+          <h3 style="margin-top:16px">Přidej se do komunity</h3>
+          <p style="color:var(--muted)">Poděl se o nejlepší momenty z vesnického fotbalu — my je sdílíme dál.</p>
+
+          <div style="margin-top:12px">
+            <form onsubmit="event.preventDefault(); alert('Díky! Do budoucna můžu přidat plnou newsletter integraci.');" style="display:flex;gap:8px">
+              <input type="email" placeholder="Tvůj e-mail" required />
+              <button class="btn ghost" type="submit">Přihlásit</button>
+            </form>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+        <div class="card">
+          <h4 style="margin:0">Info z profilu</h4>
+          <p style="color:var(--muted);margin-top:6px;font-size:14px">
+            Data extrahována z veřejného Instagram profilu; kontaktní e-mail a popis jsou převzaty z bio. (<small style="color:var(--muted)">zdroj: Instagram</small>)
+          </p>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <small>Vytvořeno automaticky — šablona pro profil <strong>@vesnickyy_fotbal</strong>. Pokud chceš jiný styl (tmavě/ světlý, více galerie, nebo stažení konkrétních obrázků), napiš a upravím to.</small>
+    </footer>
+  </div>
+</body>
+</html>
