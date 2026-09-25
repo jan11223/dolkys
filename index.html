@@ -1740,3 +1740,607 @@ renderAnnouncements();
 </body>
 </html>
 ```
+
+        return;
+
+    }
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    if(!server.votes){
+        server.votes=[];
+    }
+
+    server.votes.push(rating);
+
+    localStorage.setItem(
+        key,
+        "true"
+    );
+
+    save();
+
+    renderServers();
+
+}
+
+/* =========================
+   FILTER
+========================= */
+
+function setFilter(type,button){
+
+    filter = type;
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(
+            b=>b.classList.remove("active")
+        );
+
+    button.classList.add("active");
+
+    renderServers();
+
+}
+
+/* =========================
+   SERVER MODAL
+========================= */
+
+function openAddModal(){
+
+    editingId = null;
+
+    document.getElementById(
+        "serverModalTitle"
+    ).innerText =
+        "➕ Přidat server";
+
+    clearForm();
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="block";
+
+}
+
+function closeServerModal(){
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="none";
+
+}
+
+function clearForm(){
+
+    document.getElementById("serverName").value="";
+    document.getElementById("serverOwner").value="";
+    document.getElementById("serverDiscord").value="";
+    document.getElementById("serverDescription").value="";
+    document.getElementById("serverCountry").value="cz";
+
+}
+
+/* =========================
+   SAVE SERVER
+========================= */
+
+function saveServer(){
+
+    const name =
+        document.getElementById(
+            "serverName"
+        ).value.trim();
+
+    const owner =
+        document.getElementById(
+            "serverOwner"
+        ).value.trim();
+
+    const country =
+        document.getElementById(
+            "serverCountry"
+        ).value;
+
+    const discord =
+        document.getElementById(
+            "serverDiscord"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "serverDescription"
+        ).value.trim();
+
+    if(!name || !owner || !description){
+
+        alert(
+            "Vyplň název, majitele a popis."
+        );
+
+        return;
+
+    }
+
+    if(editingId){
+
+        const server =
+            servers.find(
+                s=>s.id===editingId
+            );
+
+        if(server){
+
+            server.name=name;
+            server.owner=owner;
+            server.country=country;
+            server.discord=discord;
+            server.description=description;
+
+        }
+
+    }else{
+
+        servers.push({
+
+            id:Date.now(),
+
+            name:name,
+
+            owner:owner,
+
+            country:country,
+
+            discord:
+                discord ||
+                "https://discord.com/",
+
+            description:description,
+
+            votes:[],
+
+            created:Date.now()
+
+        });
+
+    }
+
+    save();
+
+    renderServers();
+
+    renderAnnouncements();
+
+    renderAdmin();
+
+    closeServerModal();
+
+    clearForm();
+
+}
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+function openLogin(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="block";
+
+}
+
+function closeLogin(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="none";
+
+}
+
+function login(){
+
+    const name =
+        document.getElementById(
+            "loginName"
+        ).value;
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+    /*
+       ADMIN LOGIN
+    */
+
+    if(
+        name === "Dolkys" &&
+        password === "Doljan4200"
+    ){
+
+        adminLogged=true;
+
+        closeLogin();
+
+        document.getElementById(
+            "adminPanel"
+        ).style.display="block";
+
+        document.getElementById(
+            "serverList"
+        ).style.display="none";
+
+        document.querySelector(
+            ".controls"
+        ).style.display="none";
+
+        document.querySelector(
+            ".announcements"
+        ).style.display="none";
+
+        renderAdmin();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        alert(
+            "❌ Špatné uživatelské jméno nebo heslo."
+        );
+
+    }
+
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    adminLogged=false;
+
+    document.getElementById(
+        "adminPanel"
+    ).style.display="none";
+
+    document.getElementById(
+        "serverList"
+    ).style.display="block";
+
+    document.querySelector(
+        ".controls"
+    ).style.display="block";
+
+    document.querySelector(
+        ".announcements"
+    ).style.display="block";
+
+}
+
+/* =========================
+   ADMIN SERVER LIST
+========================= */
+
+function renderAdmin(){
+
+    const box =
+        document.getElementById(
+            "adminServers"
+        );
+
+    if(!servers.length){
+
+        box.innerHTML=`
+
+            <div class="admin-card">
+
+                <b>📭 Žádné servery</b>
+
+                <div class="admin-notice">
+                    Zatím nebyl přidán žádný server.
+                </div>
+
+                <div class="admin-actions">
+
+                    <button
+                        class="edit-btn"
+                        onclick="openAddModal()">
+
+                        + Přidat server
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    box.innerHTML =
+        servers.map(server=>`
+
+        <div class="admin-card">
+
+            <div class="admin-card-top">
+
+                <div>
+
+                    <div class="admin-name">
+                        ${escapeHTML(server.name)}
+                    </div>
+
+                    <div class="admin-notice">
+                        👤 ${escapeHTML(server.owner)}
+                        <br>
+                        ${countryName(server.country)}
+                        <br>
+                        ⭐ ${getRating(server).toFixed(1)}
+                        / 5
+                        • ${server.votes.length} hlasů
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="admin-actions">
+
+                <button
+                    class="edit-btn"
+                    onclick="editServer(${server.id})">
+
+                    ✏️ Upravit
+
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteServer(${server.id})">
+
+                    🗑️ Smazat
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+/* =========================
+   EDIT
+========================= */
+
+function editServer(id){
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    editingId=id;
+
+    document.getElementById(
+        "serverModalTitle"
+    ).innerText =
+        "✏️ Upravit server";
+
+    document.getElementById(
+        "serverName"
+    ).value=server.name;
+
+    document.getElementById(
+        "serverOwner"
+    ).value=server.owner;
+
+    document.getElementById(
+        "serverCountry"
+    ).value=server.country;
+
+    document.getElementById(
+        "serverDiscord"
+    ).value=server.discord;
+
+    document.getElementById(
+        "serverDescription"
+    ).value=server.description;
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="block";
+
+}
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteServer(id){
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    const yes =
+        confirm(
+            "Opravdu chceš smazat server:\n\n" +
+            server.name
+        );
+
+    if(!yes)return;
+
+    servers =
+        servers.filter(
+            s=>s.id!==id
+        );
+
+    save();
+
+    renderAdmin();
+
+    renderServers();
+
+    renderAnnouncements();
+
+}
+
+/* =========================
+   ANNOUNCEMENTS
+========================= */
+
+function renderAnnouncements(){
+
+    const box =
+        document.getElementById(
+            "announcements"
+        );
+
+    if(!servers.length){
+
+        box.innerHTML=`
+
+            <div class="announcement">
+
+                <div>
+
+                    <div class="announcement-name">
+                        Zatím žádná oznámení
+                    </div>
+
+                    <div class="announcement-text">
+                        Nově přidané servery se zde zobrazí automaticky.
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    const newest =
+        [...servers]
+        .sort(
+            (a,b)=>
+                (b.created||0) -
+                (a.created||0)
+        )
+        .slice(0,5);
+
+    box.innerHTML =
+        newest.map(server=>`
+
+        <div class="announcement">
+
+            <div>
+
+                <div class="announcement-name">
+
+                    🆕
+                    ${escapeHTML(server.name)}
+
+                </div>
+
+                <div class="announcement-text">
+
+                    Nově přidaný server
+                    •
+                    ${countryName(server.country)}
+
+                </div>
+
+            </div>
+
+            <div class="new-label">
+                NOVÉ
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+
+    localStorage.setItem(
+        "eh_servers",
+        JSON.stringify(servers)
+    );
+
+}
+
+/* =========================
+   SECURITY HELPERS
+========================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+function safeURL(url){
+
+    if(!url)return "#";
+
+    if(
+        url.startsWith("https://") ||
+        url.startsWith("http://")
+    ){
+        return escapeHTML(url);
+    }
+
+    return "#";
+
+}
+
+/* =========================
+   START
+========================= */
+
+renderServers();
+
+renderAnnouncements();
+
+</script>
+
+</body>
+</html>
+```
