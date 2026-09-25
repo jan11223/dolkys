@@ -1,15 +1,15 @@
-```html
 <!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Emergency Hamburg RP — Server List</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<style>
 *{
     box-sizing:border-box;
     margin:0;
@@ -19,27 +19,25 @@
 body{
     font-family:'Montserrat',sans-serif;
     background:
-        radial-gradient(circle at top right,rgba(255,50,50,.18),transparent 35%),
-        radial-gradient(circle at bottom left,rgba(255,140,0,.10),transparent 35%),
-        #0b0d10;
+        radial-gradient(circle at top left,rgba(180,0,0,.22),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(255,50,50,.12),transparent 30%),
+        #090909;
     color:white;
     min-height:100vh;
 }
-
-/* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:100;
-    padding:18px 5%;
-    background:rgba(10,10,12,.92);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(10,10,10,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #292929;
+    padding:15px 5%;
 }
 
 .nav{
-    max-width:1200px;
+    max-width:1250px;
     margin:auto;
     display:flex;
     justify-content:space-between;
@@ -48,207 +46,213 @@ header{
 }
 
 .logo{
-    font-size:20px;
+    font-size:21px;
     font-weight:800;
 }
 
 .logo span{
-    color:#ff4040;
+    color:#ff3030;
 }
 
 .nav-buttons{
     display:flex;
     gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
 }
 
-.nav-btn{
-    border:0;
-    background:#ff4040;
-    color:white;
-    padding:11px 15px;
+button,
+.btn{
+    border:none;
     border-radius:10px;
+    padding:11px 16px;
     font-family:inherit;
     font-weight:700;
     cursor:pointer;
+    transition:.2s;
 }
 
-.admin-btn{
-    background:#24282f;
+button:hover,
+.btn:hover{
+    transform:translateY(-2px);
 }
 
-.nav-btn:hover{
-    transform:translateY(-1px);
-    filter:brightness(1.1);
+.btn-red{
+    background:#e52323;
+    color:white;
 }
 
-/* HERO */
+.btn-dark{
+    background:#1b1b1b;
+    color:white;
+    border:1px solid #333;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:30px 5%;
+}
 
 .hero{
-    max-width:1100px;
-    margin:auto;
-    text-align:center;
-    padding:65px 20px 35px;
+    padding:55px 0 35px;
 }
 
 .badge{
     display:inline-block;
-    padding:8px 14px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.05);
-    border-radius:30px;
-    color:#ff6464;
-    font-size:11px;
-    font-weight:800;
-    margin-bottom:18px;
+    padding:8px 13px;
+    border-radius:20px;
+    background:#351313;
+    color:#ff6666;
+    border:1px solid #612020;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:15px;
 }
 
 .hero h1{
-    font-size:clamp(38px,7vw,70px);
-    line-height:1;
-    font-weight:800;
-    margin-bottom:20px;
+    font-size:clamp(32px,6vw,64px);
+    line-height:1.05;
+    margin-bottom:15px;
 }
 
 .hero h1 span{
-    color:#ff4040;
+    color:#ff3030;
 }
 
 .hero p{
-    max-width:650px;
-    margin:auto;
-    color:#aeb2b8;
+    max-width:700px;
+    color:#aaa;
     line-height:1.7;
 }
 
-/* OZNAMENI */
-
-.announcements{
-    max-width:1100px;
-    margin:10px auto 30px;
-    padding:0 20px;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin:25px 0 40px;
 }
 
-.announcement-box{
-    background:linear-gradient(
-        135deg,
-        rgba(255,64,64,.13),
-        rgba(255,255,255,.035)
-    );
-    border:1px solid rgba(255,64,64,.28);
-    border-radius:18px;
+.stat{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:15px;
     padding:20px;
 }
 
-.announcement-title{
-    font-size:17px;
-    font-weight:800;
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#ff3939;
+}
+
+.stat span{
+    color:#999;
+    font-size:13px;
+}
+
+.section-title{
     margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:25px;
+}
+
+.section-title p{
+    color:#888;
+    margin-top:5px;
+}
+
+.announcements{
+    display:grid;
+    gap:10px;
+    margin-bottom:40px;
 }
 
 .announcement{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:13px 0;
-    border-top:1px solid rgba(255,255,255,.07);
+    background:#111;
+    border:1px solid #292929;
+    border-left:4px solid #e52323;
+    border-radius:12px;
+    padding:15px;
 }
 
-.announcement:first-child{
-    border-top:0;
+.announcement b{
+    display:block;
+    margin-bottom:5px;
 }
 
-.announcement-name{
-    font-size:14px;
-    font-weight:700;
+.announcement small{
+    color:#777;
 }
-
-.announcement-text{
-    color:#92979e;
-    font-size:12px;
-    margin-top:4px;
-}
-
-.new-label{
-    background:#ff4040;
-    padding:5px 8px;
-    border-radius:6px;
-    font-size:9px;
-    font-weight:800;
-    height:max-content;
-}
-
-/* CONTROLS */
 
 .controls{
-    max-width:1100px;
-    margin:auto;
-    padding:0 20px 30px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
 }
 
 .search{
-    width:100%;
-    padding:15px;
-    background:#15181d;
-    border:1px solid #292d34;
+    flex:1;
+    min-width:220px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:12px 15px;
     color:white;
-    border-radius:12px;
-    outline:0;
     font-family:inherit;
-    margin-bottom:12px;
+    outline:none;
 }
 
-.search:focus{
-    border-color:#ff4040;
-}
-
-.filters{
+.country-list{
     display:flex;
-    flex-wrap:wrap;
     gap:7px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    margin-bottom:20px;
 }
 
-.filter{
-    border:1px solid #292d34;
-    background:#15181d;
-    color:#bbbfc5;
-    padding:9px 12px;
-    border-radius:9px;
-    cursor:pointer;
+.country-list button{
+    white-space:nowrap;
+    background:#141414;
+    border:1px solid #303030;
+    color:#ddd;
 }
 
-.filter.active,
-.filter:hover{
-    background:#ff4040;
+.country-list button.active{
+    background:#e52323;
+    border-color:#e52323;
     color:white;
-    border-color:#ff4040;
 }
 
-/* SERVER */
-
-.server-list{
-    max-width:1100px;
-    margin:auto;
-    padding:0 20px 70px;
+.servers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:18px;
 }
 
-.server-card{
-    background:linear-gradient(145deg,#171a20,#111318);
-    border:1px solid #292d34;
-    border-radius:18px;
-    padding:22px;
-    margin-bottom:15px;
-    transition:.2s;
+.server{
+    background:linear-gradient(145deg,#151515,#0e0e0e);
+    border:1px solid #292929;
+    border-radius:17px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+    transition:.25s;
 }
 
-.server-card:hover{
-    transform:translateY(-2px);
-    border-color:rgba(255,64,64,.5);
+.server:hover{
+    transform:translateY(-4px);
+    border-color:#622222;
 }
 
 .server-top{
     display:flex;
     justify-content:space-between;
-    gap:15px;
+    gap:10px;
+    align-items:flex-start;
 }
 
 .server-name{
@@ -256,96 +260,112 @@ header{
     font-weight:800;
 }
 
-.owner{
-    color:#8e949c;
-    font-size:12px;
+.country{
+    font-size:13px;
+    color:#aaa;
     margin-top:6px;
 }
 
-.description{
-    color:#b6bac0;
-    font-size:14px;
-    line-height:1.6;
-    margin-top:15px;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:15px;
-}
-
-.tag{
-    background:rgba(255,255,255,.06);
-    color:#c7cbd0;
-    padding:6px 9px;
+.new{
+    background:#e52323;
+    padding:5px 8px;
     border-radius:7px;
-    font-size:11px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.server-desc{
+    color:#999;
+    line-height:1.5;
+    font-size:13px;
+    margin:15px 0;
+}
+
+.server-info{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
+}
+
+.info{
+    background:#191919;
+    border:1px solid #2d2d2d;
+    border-radius:8px;
+    padding:7px 9px;
+    color:#ccc;
+    font-size:12px;
 }
 
 .rating{
-    min-width:125px;
-    text-align:right;
+    color:#ffc400;
+    letter-spacing:2px;
+    margin-bottom:5px;
 }
 
-.stars{
-    color:#ffc107;
-    font-size:19px;
-}
-
-.rating-number{
-    color:#999ea5;
+.rating-info{
+    color:#777;
     font-size:11px;
-    margin-top:5px;
+    margin-bottom:13px;
 }
 
-.server-bottom{
+.server-buttons{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-top:20px;
-    padding-top:16px;
-    border-top:1px solid rgba(255,255,255,.07);
+    gap:8px;
 }
 
-.vote-box{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-}
-
-.vote{
-    border:1px solid #343941;
-    background:#1d2127;
-    color:#ddd;
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.vote:hover{
-    border-color:#ff4040;
-}
-
-.discord{
-    background:#5865f2;
-    color:white;
+.server-buttons a{
+    flex:1;
+    text-align:center;
     text-decoration:none;
-    padding:10px 15px;
-    border-radius:9px;
-    font-size:12px;
-    font-weight:700;
+}
+
+.vote-area{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #292929;
+}
+
+.vote-area p{
+    color:#888;
+    font-size:11px;
+    margin-bottom:8px;
+}
+
+.vote-buttons{
+    display:flex;
+    gap:5px;
+}
+
+.vote-buttons button{
+    flex:1;
+    padding:8px 3px;
+    background:#1c1c1c;
+    color:#ffc400;
+    border:1px solid #333;
+}
+
+.vote-buttons button:hover{
+    background:#332d12;
 }
 
 .empty{
     text-align:center;
-    color:#777d85;
-    padding:50px 20px;
+    color:#777;
+    padding:50px;
+    background:#111;
+    border-radius:15px;
+    border:1px solid #292929;
 }
 
-/* MODAL */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#666;
+    font-size:12px;
+}
+
+/* MODALS */
 
 .modal{
     display:none;
@@ -353,211 +373,192 @@ header{
     inset:0;
     z-index:500;
     background:rgba(0,0,0,.78);
-    backdrop-filter:blur(7px);
-    padding:20px;
-    overflow:auto;
+    backdrop-filter:blur(8px);
+    align-items:center;
+    justify-content:center;
+    padding:15px;
 }
 
-.modal-content{
-    max-width:540px;
-    margin:40px auto;
-    background:#15181d;
-    border:1px solid #30343c;
-    border-radius:20px;
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(600px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#111;
+    border:1px solid #333;
+    border-radius:18px;
     padding:25px;
     position:relative;
 }
 
 .close{
     position:absolute;
-    right:17px;
     top:12px;
-    border:0;
-    background:none;
-    color:#aaa;
-    font-size:27px;
-    cursor:pointer;
+    right:12px;
+    background:#222;
+    color:white;
+    border:1px solid #333;
+    border-radius:50%;
+    width:35px;
+    height:35px;
+    padding:0;
 }
 
 .modal h2{
-    margin-bottom:8px;
-}
-
-.modal-info{
-    color:#8f949b;
-    font-size:12px;
-    line-height:1.6;
     margin-bottom:20px;
 }
 
-.form-input,
-.form-select,
-.form-textarea{
+.form{
+    display:grid;
+    gap:12px;
+}
+
+.form label{
+    font-size:12px;
+    color:#aaa;
+}
+
+.form input,
+.form textarea,
+.form select{
     width:100%;
-    background:#0e1013;
-    border:1px solid #30343c;
+    margin-top:5px;
+    padding:12px;
+    background:#191919;
+    border:1px solid #333;
     color:white;
-    padding:13px;
-    border-radius:10px;
-    margin-bottom:12px;
-    outline:none;
+    border-radius:9px;
     font-family:inherit;
+    outline:none;
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus{
-    border-color:#ff4040;
-}
-
-.form-textarea{
-    min-height:100px;
+.form textarea{
+    min-height:90px;
     resize:vertical;
 }
 
-.submit{
-    width:100%;
-    padding:14px;
-    background:#ff4040;
-    border:0;
-    color:white;
-    font-weight:800;
-    border-radius:10px;
-    cursor:pointer;
+.form button{
+    margin-top:5px;
 }
 
 /* ADMIN */
 
-.admin-panel{
+.admin-dashboard{
     display:none;
-    max-width:1200px;
-    margin:25px auto;
-    padding:0 20px 70px;
+    margin-bottom:30px;
 }
 
-.admin-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
+.admin-dashboard.show{
+    display:block;
 }
 
-.admin-header h2{
-    font-size:25px;
+.admin-head{
+    background:linear-gradient(135deg,#351010,#171010);
+    border:1px solid #662222;
+    border-radius:17px;
+    padding:20px;
+    margin-bottom:15px;
 }
 
-.logout{
-    background:#292d34;
-    border:0;
-    color:white;
-    padding:10px 14px;
-    border-radius:9px;
-    cursor:pointer;
+.admin-head h2{
+    color:#ff4545;
 }
 
-.admin-card{
-    background:#15181d;
-    border:1px solid #292d34;
-    border-radius:15px;
-    padding:18px;
-    margin-bottom:12px;
-}
-
-.admin-card-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.admin-name{
-    font-weight:800;
+.admin-head p{
+    color:#aaa;
+    margin-top:5px;
+    font-size:13px;
 }
 
 .admin-actions{
     display:flex;
-    gap:7px;
-    margin-top:15px;
+    gap:8px;
     flex-wrap:wrap;
 }
 
-.edit-btn,
-.delete-btn{
-    border:0;
-    color:white;
-    padding:9px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    font-family:inherit;
-    font-weight:700;
+.admin-list{
+    display:grid;
+    gap:10px;
 }
 
-.edit-btn{
-    background:#3a6ff7;
+.admin-item{
+    background:#111;
+    border:1px solid #292929;
+    padding:15px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
 
-.delete-btn{
-    background:#d93636;
+.admin-item-info{
+    flex:1;
 }
 
-.admin-notice{
-    color:#9ba0a7;
+.admin-item-info b{
+    display:block;
+}
+
+.admin-item-info small{
+    color:#777;
+}
+
+.admin-item-actions{
+    display:flex;
+    gap:5px;
+}
+
+.admin-item-actions button{
+    padding:8px 10px;
     font-size:12px;
-    line-height:1.6;
-    margin-top:8px;
 }
 
-/* FOOTER */
+@media(max-width:700px){
 
-footer{
-    text-align:center;
-    padding:30px 20px;
-    border-top:1px solid rgba(255,255,255,.06);
-    color:#656a72;
-    font-size:12px;
-}
+    header{
+        padding:12px 4%;
+    }
 
-/* MOBILE */
-
-@media(max-width:650px){
-
-    .logo{
-        font-size:15px;
+    .nav{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
     .nav-buttons{
-        flex-direction:column;
+        width:100%;
     }
 
-    .nav-btn{
-        padding:8px 10px;
-        font-size:10px;
+    .nav-buttons button{
+        flex:1;
     }
 
     .hero{
-        padding-top:50px;
+        padding-top:35px;
     }
 
-    .server-top{
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .servers{
+        grid-template-columns:1fr;
+    }
+
+    .admin-item{
+        align-items:flex-start;
         flex-direction:column;
     }
 
-    .rating{
-        text-align:left;
+    .admin-item-actions{
+        width:100%;
     }
 
-    .server-bottom{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .discord{
-        text-align:center;
-    }
-
-    .admin-header{
-        flex-direction:column;
-        align-items:stretch;
+    .admin-item-actions button{
+        flex:1;
     }
 }
 </style>
@@ -566,739 +567,544 @@ footer{
 <body>
 
 <header>
+<div class="nav">
 
-    <div class="nav">
+<div class="logo">
+🚨 Emergency <span>Hamburg RP</span>
+</div>
 
-        <div class="logo">
-            🚨 Emergency <span>Hamburg</span> RP
-        </div>
+<div class="nav-buttons">
+<button class="btn-dark" onclick="openAdd()">＋ Přidat server</button>
+<button class="btn-red" onclick="openLogin()">🔐 Administrace</button>
+</div>
 
-        <div class="nav-buttons">
-
-            <button class="nav-btn"
-                    onclick="openAddModal()">
-                + Přidat server
-            </button>
-
-            <button class="nav-btn admin-btn"
-                    onclick="openLogin()">
-                🔐 Administrace
-            </button>
-
-        </div>
-
-    </div>
-
+</div>
 </header>
+
+<main class="container">
 
 <section class="hero">
 
-    <div class="badge">
-        COMMUNITY SERVER LIST
-    </div>
+<div class="badge">🇩🇪 EMERGENCY HAMBURG RP</div>
 
-    <h1>
-        Emergency Hamburg<br>
-        <span>Server List</span>
-    </h1>
+<h1>Server <span>List</span></h1>
 
-    <p>
-        Najdi komunitní server, prohlédni si jeho hodnocení
-        a vyber si server, který ti vyhovuje.
-    </p>
+<p>
+Najdi Emergency Hamburg RP server, připoj se ke komunitě
+a ohodnoť server. Vlastní server může přidat každý.
+</p>
 
 </section>
 
-<!-- OZNÁMENÍ -->
+<div class="stats">
+<div class="stat">
+<strong id="serverCount">2</strong>
+<span>Serverů</span>
+</div>
 
-<section class="announcements">
+<div class="stat">
+<strong id="playerCount">90</strong>
+<span>Hráčů online</span>
+</div>
 
-    <div class="announcement-box">
+<div class="stat">
+<strong>⭐</strong>
+<span>Hodnocení serverů</span>
+</div>
+</div>
 
-        <div class="announcement-title">
-            📢 Oznámení
-        </div>
+<section>
 
-        <div id="announcements"></div>
+<div class="section-title">
+<h2>📢 Oznámení</h2>
+<p>Nejnověji přidané servery</p>
+</div>
 
-    </div>
+<div class="announcements" id="announcements"></div>
 
 </section>
 
-<!-- VYHLEDÁVÁNÍ -->
+<section>
+
+<div class="section-title">
+<h2>🌍 Servery</h2>
+<p>Vyber zemi nebo vyhledej server</p>
+</div>
 
 <div class="controls">
+<input
+    class="search"
+    id="search"
+    placeholder="🔎 Hledat server..."
+    oninput="renderServers()"
+>
 
-    <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="🔎 Hledat server..."
-        oninput="renderServers()"
-    >
+<button class="btn-dark" onclick="setSort('rating')">
+⭐ Nejlépe hodnocené
+</button>
 
-    <div class="filters">
+<button class="btn-dark" onclick="setSort('players')">
+👥 Nejvíce hráčů
+</button>
+</div>
 
-        <button class="filter active"
-                onclick="setFilter('all',this)">
-            🌍 Vše
-        </button>
+<div class="country-list">
 
-        <button class="filter"
-                onclick="setFilter('cz',this)">
-            🇨🇿 CZ
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('sk',this)">
-            🇸🇰 SK
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('de',this)">
-            🇩🇪 DE
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('at',this)">
-            🇦🇹 AT
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('pl',this)">
-            🇵🇱 PL
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('hu',this)">
-            🇭🇺 HU
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('ch',this)">
-            🇨🇭 CH
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('fr',this)">
-            🇫🇷 FR
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('it',this)">
-            🇮🇹 IT
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('gb',this)">
-            🇬🇧 UK
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('us',this)">
-            🇺🇸 USA
-        </button>
-
-        <button class="filter"
-                onclick="setFilter('top',this)">
-            ⭐ Nejlépe hodnocené
-        </button>
-
-    </div>
+<button class="active" onclick="setCountry('ALL',this)">🌍 Vše</button>
+<button onclick="setCountry('CZ',this)">🇨🇿 Česko</button>
+<button onclick="setCountry('SK',this)">🇸🇰 Slovensko</button>
+<button onclick="setCountry('DE',this)">🇩🇪 Německo</button>
+<button onclick="setCountry('AT',this)">🇦🇹 Rakousko</button>
+<button onclick="setCountry('PL',this)">🇵🇱 Polsko</button>
+<button onclick="setCountry('HU',this)">🇭🇺 Maďarsko</button>
+<button onclick="setCountry('CH',this)">🇨🇭 Švýcarsko</button>
+<button onclick="setCountry('FR',this)">🇫🇷 Francie</button>
+<button onclick="setCountry('IT',this)">🇮🇹 Itálie</button>
+<button onclick="setCountry('GB',this)">🇬🇧 Velká Británie</button>
+<button onclick="setCountry('US',this)">🇺🇸 USA</button>
+<button onclick="setCountry('NL',this)">🇳🇱 Nizozemsko</button>
+<button onclick="setCountry('BE',this)">🇧🇪 Belgie</button>
+<button onclick="setCountry('DK',this)">🇩🇰 Dánsko</button>
+<button onclick="setCountry('SE',this)">🇸🇪 Švédsko</button>
+<button onclick="setCountry('NO',this)">🇳🇴 Norsko</button>
+<button onclick="setCountry('FI',this)">🇫🇮 Finsko</button>
+<button onclick="setCountry('ES',this)">🇪🇸 Španělsko</button>
+<button onclick="setCountry('PT',this)">🇵🇹 Portugalsko</button>
+<button onclick="setCountry('RO',this)">🇷🇴 Rumunsko</button>
+<button onclick="setCountry('BG',this)">🇧🇬 Bulharsko</button>
+<button onclick="setCountry('HR',this)">🇭🇷 Chorvatsko</button>
+<button onclick="setCountry('SI',this)">🇸🇮 Slovinsko</button>
 
 </div>
 
-<!-- SEZNAM -->
-
-<main class="server-list" id="serverList"></main>
-
-<!-- ADMIN PANEL -->
-
-<section class="admin-panel" id="adminPanel">
-
-    <div class="admin-header">
-
-        <div>
-            <h2>🛠️ Administrace</h2>
-
-            <div class="admin-notice">
-                Jsi přihlášen jako administrátor.
-                Zde můžeš upravovat a mazat servery.
-            </div>
-        </div>
-
-        <button class="logout"
-                onclick="logout()">
-            Odhlásit
-        </button>
-
-    </div>
-
-    <div id="adminServers"></div>
+<div class="servers" id="servers"></div>
 
 </section>
 
+<!-- ADMIN DASHBOARD -->
+
+<section class="admin-dashboard" id="adminDashboard">
+
+<div class="admin-head">
+
+<h2>🔐 ADMIN MODE</h2>
+
+<p>
+Jsi přihlášen jako <b>Dolkys</b>. Zde můžeš spravovat servery.
+</p>
+
+<br>
+
+<div class="admin-actions">
+<button class="btn-red" onclick="openAdd()">＋ Přidat server</button>
+<button class="btn-dark" onclick="logout()">Odhlásit administraci</button>
+</div>
+
+</div>
+
+<div class="admin-list" id="adminList"></div>
+
+</section>
+
+</main>
+
 <footer>
-
-    Emergency Hamburg RP Server List © 2026
-
-    <br><br>
-
-    Neoficiální komunitní projekt.
-
+Emergency Hamburg RP Server List • GitHub Pages
 </footer>
+
 
 <!-- LOGIN MODAL -->
 
 <div class="modal" id="loginModal">
 
-    <div class="modal-content">
+<div class="modal-box">
 
-        <button class="close"
-                onclick="closeLogin()">
-            ×
-        </button>
+<button class="close" onclick="closeModal('loginModal')">×</button>
 
-        <h2>🔐 Administrace</h2>
+<h2>🔐 Administrace</h2>
 
-        <p class="modal-info">
-            Přihlášení do administrace server listu.
-        </p>
+<div class="form">
 
-        <input
-            class="form-input"
-            id="loginName"
-            placeholder="Uživatelské jméno"
-        >
+<label>
+Uživatelské jméno
+<input id="loginUser" autocomplete="username" placeholder="Uživatelské jméno">
+</label>
 
-        <input
-            class="form-input"
-            id="loginPassword"
-            type="password"
-            placeholder="Heslo"
-        >
+<label>
+Heslo
+<input id="loginPass" type="password" autocomplete="current-password" placeholder="Heslo">
+</label>
 
-        <button class="submit"
-                onclick="login()">
-            Přihlásit se
-        </button>
+<button class="btn-red" onclick="login()">Přihlásit se</button>
 
-    </div>
+<p id="loginError" style="color:#ff4d4d;font-size:12px;"></p>
 
 </div>
 
-<!-- SERVER MODAL -->
+</div>
+
+</div>
+
+
+<!-- ADD SERVER MODAL -->
 
 <div class="modal" id="serverModal">
 
-    <div class="modal-content">
+<div class="modal-box">
 
-        <button class="close"
-                onclick="closeServerModal()">
-            ×
-        </button>
+<button class="close" onclick="closeModal('serverModal')">×</button>
 
-        <h2 id="serverModalTitle">
-            ➕ Přidat server
-        </h2>
+<h2 id="serverModalTitle">＋ Přidat server</h2>
 
-        <p class="modal-info">
-            Vyplň informace o Emergency Hamburg RP serveru.
-        </p>
+<div class="form">
 
-        <input
-            class="form-input"
-            id="serverName"
-            placeholder="Název serveru"
-        >
+<label>
+Název serveru
+<input id="serverName" placeholder="Např. Czech RP">
+</label>
 
-        <input
-            class="form-input"
-            id="serverOwner"
-            placeholder="Majitel / vedení"
-        >
+<label>
+Oblast / vlastník
+<input id="serverOwner" placeholder="Např. Goodryk">
+</label>
 
-        <select
-            class="form-select"
-            id="serverCountry">
+<label>
+Popis serveru
+<textarea id="serverDesc" placeholder="Napiš něco o serveru..."></textarea>
+</label>
 
-            <option value="cz">🇨🇿 Česko</option>
-            <option value="sk">🇸🇰 Slovensko</option>
-            <option value="de">🇩🇪 Německo</option>
-            <option value="at">🇦🇹 Rakousko</option>
-            <option value="pl">🇵🇱 Polsko</option>
-            <option value="hu">🇭🇺 Maďarsko</option>
-            <option value="ch">🇨🇭 Švýcarsko</option>
-            <option value="fr">🇫🇷 Francie</option>
-            <option value="it">🇮🇹 Itálie</option>
-            <option value="gb">🇬🇧 Velká Británie</option>
-            <option value="us">🇺🇸 USA</option>
+<label>
+🌍 Země
+<select id="serverCountry">
 
-        </select>
+<option value="CZ">🇨🇿 Česko</option>
+<option value="SK">🇸🇰 Slovensko</option>
+<option value="DE">🇩🇪 Německo</option>
+<option value="AT">🇦🇹 Rakousko</option>
+<option value="PL">🇵🇱 Polsko</option>
+<option value="HU">🇭🇺 Maďarsko</option>
+<option value="CH">🇨🇭 Švýcarsko</option>
+<option value="FR">🇫🇷 Francie</option>
+<option value="IT">🇮🇹 Itálie</option>
+<option value="GB">🇬🇧 Velká Británie</option>
+<option value="US">🇺🇸 USA</option>
+<option value="NL">🇳🇱 Nizozemsko</option>
+<option value="BE">🇧🇪 Belgie</option>
+<option value="DK">🇩🇰 Dánsko</option>
+<option value="SE">🇸🇪 Švédsko</option>
+<option value="NO">🇳🇴 Norsko</option>
+<option value="FI">🇫🇮 Finsko</option>
+<option value="ES">🇪🇸 Španělsko</option>
+<option value="PT">🇵🇹 Portugalsko</option>
+<option value="RO">🇷🇴 Rumunsko</option>
+<option value="BG">🇧🇬 Bulharsko</option>
+<option value="HR">🇭🇷 Chorvatsko</option>
+<option value="SI">🇸🇮 Slovinsko</option>
 
-        <input
-            class="form-input"
-            id="serverDiscord"
-            placeholder="Discord odkaz"
-        >
+</select>
+</label>
 
-        <textarea
-            class="form-textarea"
-            id="serverDescription"
-            placeholder="Popis serveru..."
-        ></textarea>
+<label>
+👥 Počet hráčů online
+<input id="serverPlayers" type="number" min="0" value="0">
+</label>
 
-        <button
-            class="submit"
-            onclick="saveServer()">
-            Uložit server
-        </button>
+<label>
+🔗 Odkaz na Discord / server
+<input id="serverLink" type="url" placeholder="https://discord.gg/...">
+</label>
 
-    </div>
+<button class="btn-red" onclick="saveServer()">💾 Uložit server</button>
 
 </div>
 
+</div>
+
+</div>
+
+
 <script>
 
-/* =========================
-   DATA
-========================= */
+const FLAGS = {
+CZ:"🇨🇿",
+SK:"🇸🇰",
+DE:"🇩🇪",
+AT:"🇦🇹",
+PL:"🇵🇱",
+HU:"🇭🇺",
+CH:"🇨🇭",
+FR:"🇫🇷",
+IT:"🇮🇹",
+GB:"🇬🇧",
+US:"🇺🇸",
+NL:"🇳🇱",
+BE:"🇧🇪",
+DK:"🇩🇰",
+SE:"🇸🇪",
+NO:"🇳🇴",
+FI:"🇫🇮",
+ES:"🇪🇸",
+PT:"🇵🇹",
+RO:"🇷🇴",
+BG:"🇧🇬",
+HR:"🇭🇷",
+SI:"🇸🇮"
+};
 
-let servers = [];
+const COUNTRY_NAMES = {
+CZ:"Česko",
+SK:"Slovensko",
+DE:"Německo",
+AT:"Rakousko",
+PL:"Polsko",
+HU:"Maďarsko",
+CH:"Švýcarsko",
+FR:"Francie",
+IT:"Itálie",
+GB:"Velká Británie",
+US:"USA",
+NL:"Nizozemsko",
+BE:"Belgie",
+DK:"Dánsko",
+SE:"Švédsko",
+NO:"Norsko",
+FI:"Finsko",
+ES:"Španělsko",
+PT:"Portugalsko",
+RO:"Rumunsko",
+BG:"Bulharsko",
+HR:"Chorvatsko",
+SI:"Slovinsko"
+};
 
-let filter = "all";
-
-let editingId = null;
-
-let adminLogged = false;
 
 /*
-   ŽÁDNÉ UKÁZKOVÉ SERVERY.
-   Seznam začíná prázdný.
+========================================
+ZÁKLADNÍ SERVERSKÁ DATA
+========================================
 */
 
-const savedServers =
-    localStorage.getItem("eh_servers");
+const defaultServers = [
 
-if(savedServers){
+{
+    id:"czech-rp",
+    name:"Czech RP",
+    owner:"Goodryk",
+    desc:"Česká Emergency Hamburg RP komunita.",
+    country:"CZ",
+    players:41,
+    link:"https://discord.gg/3zjGW9RKr9",
+    votes:[3,3,3,3,3,3],
+    created:Date.now()
+},
 
+{
+    id:"black-nova",
+    name:"Black Nova Community",
+    owner:"Black Nova",
+    desc:"Emergency Hamburg RP komunitní server.",
+    country:"CZ",
+    players:49,
+    link:"https://disboard.org/cs/server/1525564378777256117",
+    votes:[],
+    created:Date.now()-1000
+}
+
+];
+
+
+/*
+========================================
+DATA
+========================================
+*/
+
+let stored = localStorage.getItem("ehServers");
+
+let servers;
+
+if(stored){
     try{
-        servers = JSON.parse(savedServers);
+        servers = JSON.parse(stored);
     }catch(e){
-        servers = [];
+        servers = defaultServers;
     }
-
+}else{
+    servers = defaultServers;
+    localStorage.setItem("ehServers",JSON.stringify(servers));
 }
 
-/* =========================
-   COUNTRIES
-========================= */
+servers = servers.map(s => ({
+    ...s,
+    votes:Array.isArray(s.votes) ? s.votes : [],
+    players:Number(s.players)||0
+}));
 
-function countryName(country){
+let selectedCountry = "ALL";
+let sortMode = "new";
+let editingId = null;
 
-    const countries = {
 
-        cz:"🇨🇿 CZ",
-        sk:"🇸🇰 SK",
-        de:"🇩🇪 DE",
-        at:"🇦🇹 AT",
-        pl:"🇵🇱 PL",
-        hu:"🇭🇺 HU",
-        ch:"🇨🇭 CH",
-        fr:"🇫🇷 FR",
-        it:"🇮🇹 IT",
-        gb:"🇬🇧 UK",
-        us:"🇺🇸 USA"
+/*
+========================================
+MODALS
+========================================
+*/
 
-    };
-
-    return countries[country] || "🌍";
-
+function openModal(id){
+    document.getElementById(id).classList.add("show");
 }
 
-/* =========================
-   RATING
-========================= */
-
-function getRating(server){
-
-    if(!server.votes || !server.votes.length){
-        return 0;
-    }
-
-    return server.votes.reduce(
-        (a,b)=>a+b,0
-    ) / server.votes.length;
-
+function closeModal(id){
+    document.getElementById(id).classList.remove("show");
 }
 
-function stars(rating){
-
-    let result = "";
-
-    for(let i=1;i<=5;i++){
-
-        result +=
-            i <= Math.round(rating)
-            ? "★"
-            : "☆";
-
-    }
-
-    return result;
-
+function openLogin(){
+    document.getElementById("loginUser").value="";
+    document.getElementById("loginPass").value="";
+    document.getElementById("loginError").textContent="";
+    openModal("loginModal");
 }
 
-/* =========================
-   SERVER LIST
-========================= */
-
-function renderServers(){
-
-    const list =
-        document.getElementById("serverList");
-
-    const search =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
-
-    let result =
-        servers.filter(server=>{
-
-            const text =
-                (
-                    server.name +
-                    " " +
-                    server.owner +
-                    " " +
-                    server.description
-                ).toLowerCase();
-
-            const searchMatch =
-                text.includes(search);
-
-            let filterMatch = true;
-
-            if(
-                filter !== "all" &&
-                filter !== "top"
-            ){
-                filterMatch =
-                    server.country === filter;
-            }
-
-            return searchMatch &&
-                   filterMatch;
-
-        });
-
-    if(filter === "top"){
-
-        result.sort(
-            (a,b)=>
-                getRating(b)-getRating(a)
-        );
-
-    }
-
-    if(!result.length){
-
-        list.innerHTML = `
-            <div class="empty">
-                🖥️<br><br>
-                Zatím zde nejsou žádné servery.
-                <br><br>
-                Přidej první server pomocí tlačítka
-                <b>+ Přidat server</b>.
-            </div>
-        `;
-
-        return;
-
-    }
-
-    list.innerHTML =
-        result.map(server=>{
-
-            const rating =
-                getRating(server);
-
-            return `
-
-            <article class="server-card">
-
-                <div class="server-top">
-
-                    <div>
-
-                        <div class="server-name">
-                            ${escapeHTML(server.name)}
-                        </div>
-
-                        <div class="owner">
-                            👤 ${escapeHTML(server.owner)}
-                        </div>
-
-                    </div>
-
-                    <div class="rating">
-
-                        <div class="stars">
-                            ${stars(rating)}
-                        </div>
-
-                        <div class="rating-number">
-
-                            ${
-                                rating
-                                ? rating.toFixed(1)
-                                : "0.0"
-                            }
-                            / 5
-
-                            •
-                            ${server.votes.length}
-                            hlasů
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="description">
-                    ${escapeHTML(server.description)}
-                </div>
-
-                <div class="tags">
-
-                    <span class="tag">
-                        ${countryName(server.country)}
-                    </span>
-
-                    <span class="tag">
-                        🎮 Emergency Hamburg RP
-                    </span>
-
-                </div>
-
-                <div class="server-bottom">
-
-                    <div class="vote-box">
-
-                        ${[1,2,3,4,5]
-                            .map(n=>`
-
-                            <button
-                                class="vote"
-                                onclick="vote(${server.id},${n})">
-
-                                ⭐ ${n}
-
-                            </button>
-
-                        `).join("")}
-
-                    </div>
-
-                    <a
-                        class="discord"
-                        href="${safeURL(server.discord)}"
-                        target="_blank"
-                        rel="noopener">
-
-                        Discord →
-
-                    </a>
-
-                </div>
-
-            </article>
-
-            `;
-
-        }).join("");
-
-}
-
-/* =========================
-   VOTING
-========================= */
-
-function vote(id,rating){
-
-    const key =
-        "voted_" + id;
-
-    if(localStorage.getItem(key)){
-
-        alert(
-            "U tohoto serveru už jsi hlasoval."
-        );
-
-        return;
-
-    }
-
-    const server =
-        servers.find(
-            s=>s.id===id
-        );
-
-    if(!server)return;
-
-    if(!server.votes){
-        server.votes=[];
-    }
-
-    server.votes.push(rating);
-
-    localStorage.setItem(
-        key,
-        "true"
-    );
-
-    save();
-
-    renderServers();
-
-}
-
-/* =========================
-   FILTER
-========================= */
-
-function setFilter(type,button){
-
-    filter = type;
-
-    document
-        .querySelectorAll(".filter")
-        .forEach(
-            b=>b.classList.remove("active")
-        );
-
-    button.classList.add("active");
-
-    renderServers();
-
-}
-
-/* =========================
-   SERVER MODAL
-========================= */
-
-function openAddModal(){
+function openAdd(){
 
     editingId = null;
 
-    document.getElementById(
-        "serverModalTitle"
-    ).innerText =
-        "➕ Přidat server";
-
-    clearForm();
-
-    document.getElementById(
-        "serverModal"
-    ).style.display="block";
-
-}
-
-function closeServerModal(){
-
-    document.getElementById(
-        "serverModal"
-    ).style.display="none";
-
-}
-
-function clearForm(){
+    document.getElementById("serverModalTitle").textContent="＋ Přidat server";
 
     document.getElementById("serverName").value="";
     document.getElementById("serverOwner").value="";
-    document.getElementById("serverDiscord").value="";
-    document.getElementById("serverDescription").value="";
-    document.getElementById("serverCountry").value="cz";
+    document.getElementById("serverDesc").value="";
+    document.getElementById("serverCountry").value="CZ";
+    document.getElementById("serverPlayers").value="0";
+    document.getElementById("serverLink").value="";
 
+    openModal("serverModal");
 }
 
-/* =========================
-   SAVE SERVER
-========================= */
+
+/*
+========================================
+LOGIN
+========================================
+*/
+
+function login(){
+
+    const user = document.getElementById("loginUser").value.trim();
+    const pass = document.getElementById("loginPass").value;
+
+    if(user === "Dolkys" && pass === "Doljan4200"){
+
+        localStorage.setItem("adminLogged","true");
+
+        closeModal("loginModal");
+
+        showAdmin();
+
+        alert("✅ Administrace byla úspěšně zapnuta.");
+
+    }else{
+
+        document.getElementById("loginError").textContent =
+        "❌ Špatné uživatelské jméno nebo heslo.";
+
+    }
+}
+
+function logout(){
+
+    localStorage.removeItem("adminLogged");
+
+    document.getElementById("adminDashboard").classList.remove("show");
+
+    alert("Administrace byla odhlášena.");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function isAdmin(){
+    return localStorage.getItem("adminLogged") === "true";
+}
+
+function showAdmin(){
+
+    if(!isAdmin()) return;
+
+    document.getElementById("adminDashboard").classList.add("show");
+
+    renderAdmin();
+
+    document.getElementById("adminDashboard").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+/*
+========================================
+SAVE SERVER
+========================================
+*/
 
 function saveServer(){
 
-    const name =
-        document.getElementById(
-            "serverName"
-        ).value.trim();
+    const name = document.getElementById("serverName").value.trim();
+    const owner = document.getElementById("serverOwner").value.trim();
+    const desc = document.getElementById("serverDesc").value.trim();
+    const country = document.getElementById("serverCountry").value;
+    const players = Math.max(0,Number(document.getElementById("serverPlayers").value)||0);
+    const link = document.getElementById("serverLink").value.trim();
 
-    const owner =
-        document.getElementById(
-            "serverOwner"
-        ).value.trim();
-
-    const country =
-        document.getElementById(
-            "serverCountry"
-        ).value;
-
-    const discord =
-        document.getElementById(
-            "serverDiscord"
-        ).value.trim();
-
-    const description =
-        document.getElementById(
-            "serverDescription"
-        ).value.trim();
-
-    if(!name || !owner || !description){
-
-        alert(
-            "Vyplň název, majitele a popis."
-        );
-
+    if(!name){
+        alert("❌ Zadej název serveru.");
         return;
+    }
 
+    if(!link){
+        alert("❌ Zadej odkaz na server.");
+        return;
+    }
+
+    if(!/^https?:\/\//i.test(link)){
+        alert("❌ Odkaz musí začínat https://");
+        return;
     }
 
     if(editingId){
 
-        const server =
-            servers.find(
-                s=>s.id===editingId
-            );
+        const server = servers.find(s => s.id === editingId);
 
         if(server){
 
             server.name=name;
             server.owner=owner;
+            server.desc=desc;
             server.country=country;
-            server.discord=discord;
-            server.description=description;
+            server.players=players;
+            server.link=link;
 
         }
 
     }else{
 
-        servers.push({
+        servers.unshift({
 
-            id:Date.now(),
+            id:"server-"+Date.now(),
 
-            name:name,
+            name,
+            owner:owner || "Neuvedeno",
 
-            owner:owner,
+            desc:desc || "Emergency Hamburg RP server.",
 
-            country:country,
+            country,
 
-            discord:
-                discord ||
-                "https://discord.com/",
+            players,
 
-            description:description,
+            link,
 
             votes:[],
 
@@ -1308,435 +1114,510 @@ function saveServer(){
 
     }
 
-    save();
+    saveData();
+
+    closeModal("serverModal");
 
     renderServers();
-
     renderAnnouncements();
-
     renderAdmin();
 
-    closeServerModal();
-
-    clearForm();
+    alert("✅ Server byl uložen.");
 
 }
 
-/* =========================
-   ADMIN LOGIN
-========================= */
 
-function openLogin(){
-
-    document.getElementById(
-        "loginModal"
-    ).style.display="block";
-
-}
-
-function closeLogin(){
-
-    document.getElementById(
-        "loginModal"
-    ).style.display="none";
-
-}
-
-function login(){
-
-    const name =
-        document.getElementById(
-            "loginName"
-        ).value;
-
-    const password =
-        document.getElementById(
-            "loginPassword"
-        ).value;
-
-    /*
-       ADMIN LOGIN
-    */
-
-    if(
-        name === "Dolkys" &&
-        password === "Doljan4200"
-    ){
-
-        adminLogged=true;
-
-        closeLogin();
-
-        document.getElementById(
-            "adminPanel"
-        ).style.display="block";
-
-        document.getElementById(
-            "serverList"
-        ).style.display="none";
-
-        document.querySelector(
-            ".controls"
-        ).style.display="none";
-
-        document.querySelector(
-            ".announcements"
-        ).style.display="none";
-
-        renderAdmin();
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }else{
-
-        alert(
-            "❌ Špatné uživatelské jméno nebo heslo."
-        );
-
-    }
-
-}
-
-/* =========================
-   LOGOUT
-========================= */
-
-function logout(){
-
-    adminLogged=false;
-
-    document.getElementById(
-        "adminPanel"
-    ).style.display="none";
-
-    document.getElementById(
-        "serverList"
-    ).style.display="block";
-
-    document.querySelector(
-        ".controls"
-    ).style.display="block";
-
-    document.querySelector(
-        ".announcements"
-    ).style.display="block";
-
-}
-
-/* =========================
-   ADMIN SERVER LIST
-========================= */
-
-function renderAdmin(){
-
-    const box =
-        document.getElementById(
-            "adminServers"
-        );
-
-    if(!servers.length){
-
-        box.innerHTML=`
-
-            <div class="admin-card">
-
-                <b>📭 Žádné servery</b>
-
-                <div class="admin-notice">
-                    Zatím nebyl přidán žádný server.
-                </div>
-
-                <div class="admin-actions">
-
-                    <button
-                        class="edit-btn"
-                        onclick="openAddModal()">
-
-                        + Přidat server
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    box.innerHTML =
-        servers.map(server=>`
-
-        <div class="admin-card">
-
-            <div class="admin-card-top">
-
-                <div>
-
-                    <div class="admin-name">
-                        ${escapeHTML(server.name)}
-                    </div>
-
-                    <div class="admin-notice">
-                        👤 ${escapeHTML(server.owner)}
-                        <br>
-                        ${countryName(server.country)}
-                        <br>
-                        ⭐ ${getRating(server).toFixed(1)}
-                        / 5
-                        • ${server.votes.length} hlasů
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="admin-actions">
-
-                <button
-                    class="edit-btn"
-                    onclick="editServer(${server.id})">
-
-                    ✏️ Upravit
-
-                </button>
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteServer(${server.id})">
-
-                    🗑️ Smazat
-
-                </button>
-
-            </div>
-
-        </div>
-
-        `).join("");
-
-}
-
-/* =========================
-   EDIT
-========================= */
+/*
+========================================
+EDIT
+========================================
+*/
 
 function editServer(id){
 
-    const server =
-        servers.find(
-            s=>s.id===id
-        );
+    if(!isAdmin()) return;
 
-    if(!server)return;
+    const s = servers.find(x => x.id === id);
+
+    if(!s) return;
 
     editingId=id;
 
-    document.getElementById(
-        "serverModalTitle"
-    ).innerText =
-        "✏️ Upravit server";
+    document.getElementById("serverModalTitle").textContent="✏️ Upravit server";
 
-    document.getElementById(
-        "serverName"
-    ).value=server.name;
+    document.getElementById("serverName").value=s.name;
+    document.getElementById("serverOwner").value=s.owner || "";
+    document.getElementById("serverDesc").value=s.desc || "";
+    document.getElementById("serverCountry").value=s.country;
+    document.getElementById("serverPlayers").value=s.players || 0;
+    document.getElementById("serverLink").value=s.link || "";
 
-    document.getElementById(
-        "serverOwner"
-    ).value=server.owner;
-
-    document.getElementById(
-        "serverCountry"
-    ).value=server.country;
-
-    document.getElementById(
-        "serverDiscord"
-    ).value=server.discord;
-
-    document.getElementById(
-        "serverDescription"
-    ).value=server.description;
-
-    document.getElementById(
-        "serverModal"
-    ).style.display="block";
-
+    openModal("serverModal");
 }
 
-/* =========================
-   DELETE
-========================= */
+
+/*
+========================================
+DELETE
+========================================
+*/
 
 function deleteServer(id){
 
-    const server =
-        servers.find(
-            s=>s.id===id
-        );
+    if(!isAdmin()) return;
 
-    if(!server)return;
+    const s=servers.find(x=>x.id===id);
 
-    const yes =
-        confirm(
-            "Opravdu chceš smazat server:\n\n" +
-            server.name
-        );
+    if(!s) return;
 
-    if(!yes)return;
+    if(!confirm("Opravdu chceš smazat server \""+s.name+"\"?")){
+        return;
+    }
 
-    servers =
-        servers.filter(
-            s=>s.id!==id
-        );
+    servers=servers.filter(x=>x.id!==id);
 
-    save();
-
-    renderAdmin();
+    saveData();
 
     renderServers();
-
     renderAnnouncements();
+    renderAdmin();
 
 }
 
-/* =========================
-   ANNOUNCEMENTS
-========================= */
 
-function renderAnnouncements(){
+/*
+========================================
+VOTES
+========================================
+*/
 
-    const box =
-        document.getElementById(
-            "announcements"
-        );
+function vote(id,stars){
 
-    if(!servers.length){
+    const server=servers.find(s=>s.id===id);
 
-        box.innerHTML=`
+    if(!server) return;
 
-            <div class="announcement">
+    if(!Array.isArray(server.votes)){
+        server.votes=[];
+    }
 
-                <div>
+    server.votes.push(stars);
 
-                    <div class="announcement-name">
-                        Zatím žádná oznámení
-                    </div>
+    saveData();
 
-                    <div class="announcement-text">
-                        Nově přidané servery se zde zobrazí automaticky.
-                    </div>
+    renderServers();
 
-                </div>
+    alert("⭐ Děkujeme za hodnocení "+stars+"/5!");
 
-            </div>
+}
 
-        `;
 
-        return;
+/*
+========================================
+RATING
+========================================
+*/
+
+function getRating(server){
+
+    const votes=Array.isArray(server.votes) ? server.votes : [];
+
+    if(votes.length===0) return 0;
+
+    return votes.reduce((a,b)=>a+b,0)/votes.length;
+}
+
+function starsHTML(rating){
+
+    let html="";
+
+    for(let i=1;i<=5;i++){
+
+        html += i<=Math.round(rating) ? "★" : "☆";
 
     }
 
-    const newest =
-        [...servers]
-        .sort(
-            (a,b)=>
-                (b.created||0) -
-                (a.created||0)
-        )
-        .slice(0,5);
+    return html;
+}
 
-    box.innerHTML =
-        newest.map(server=>`
 
-        <div class="announcement">
+/*
+========================================
+SERVERS
+========================================
+*/
 
-            <div>
+function renderServers(){
 
-                <div class="announcement-name">
+    const container=document.getElementById("servers");
 
-                    🆕
-                    ${escapeHTML(server.name)}
+    const search=document.getElementById("search").value.toLowerCase();
+
+    let filtered=servers.filter(s=>{
+
+        const countryOK =
+            selectedCountry==="ALL" ||
+            s.country===selectedCountry;
+
+        const searchOK =
+            s.name.toLowerCase().includes(search) ||
+            (s.owner||"").toLowerCase().includes(search) ||
+            (s.desc||"").toLowerCase().includes(search);
+
+        return countryOK && searchOK;
+
+    });
+
+    if(sortMode==="rating"){
+
+        filtered.sort((a,b)=>getRating(b)-getRating(a));
+
+    }else if(sortMode==="players"){
+
+        filtered.sort((a,b)=>b.players-a.players);
+
+    }else{
+
+        filtered.sort((a,b)=>(b.created||0)-(a.created||0));
+
+    }
+
+    if(filtered.length===0){
+
+        container.innerHTML=
+        `<div class="empty">
+            🔎 Žádný server nebyl nalezen.
+        </div>`;
+
+        return;
+    }
+
+    container.innerHTML=filtered.map((s,index)=>{
+
+        const rating=getRating(s);
+
+        const votes=s.votes?.length || 0;
+
+        const isNew=index===0 && sortMode==="new";
+
+        return `
+
+        <article class="server">
+
+            <div class="server-top">
+
+                <div>
+
+                    <div class="server-name">
+                        ${escapeHTML(s.name)}
+                    </div>
+
+                    <div class="country">
+                        ${FLAGS[s.country]||"🌍"}
+                        ${COUNTRY_NAMES[s.country]||"Neznámá země"}
+                    </div>
 
                 </div>
 
-                <div class="announcement-text">
+                ${isNew ? `<span class="new">NOVÉ</span>` : ""}
 
-                    Nově přidaný server
-                    •
-                    ${countryName(server.country)}
+            </div>
+
+            <div class="server-desc">
+                ${escapeHTML(s.desc || "")}
+            </div>
+
+            <div class="server-info">
+
+                <span class="info">
+                    👤 ${escapeHTML(s.owner||"Neuvedeno")}
+                </span>
+
+                <span class="info">
+                    👥 ${s.players} hráčů
+                </span>
+
+            </div>
+
+            <div class="rating">
+                ${starsHTML(rating)}
+            </div>
+
+            <div class="rating-info">
+                ${rating ? rating.toFixed(1) : "0.0"} / 5
+                • ${votes} hlasů
+            </div>
+
+            <div class="server-buttons">
+
+                <a
+                    class="btn btn-red"
+                    href="${safeURL(s.link)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔗 Připojit
+                </a>
+
+            </div>
+
+            <div class="vote-area">
+
+                <p>Ohodnoť tento server:</p>
+
+                <div class="vote-buttons">
+
+                    <button onclick="vote('${s.id}',1)">1★</button>
+                    <button onclick="vote('${s.id}',2)">2★</button>
+                    <button onclick="vote('${s.id}',3)">3★</button>
+                    <button onclick="vote('${s.id}',4)">4★</button>
+                    <button onclick="vote('${s.id}',5)">5★</button>
 
                 </div>
 
             </div>
 
-            <div class="new-label">
-                NOVÉ
+        </article>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/*
+========================================
+ANNOUNCEMENTS
+========================================
+*/
+
+function renderAnnouncements(){
+
+    const box=document.getElementById("announcements");
+
+    const newest=[...servers]
+        .sort((a,b)=>(b.created||0)-(a.created||0))
+        .slice(0,5);
+
+    if(newest.length===0){
+
+        box.innerHTML=
+        `<div class="announcement">
+            <b>Zatím nejsou žádná oznámení.</b>
+        </div>`;
+
+        return;
+    }
+
+    box.innerHTML=newest.map((s,i)=>`
+
+        <div class="announcement">
+
+            <b>
+                🆕 Nový server: ${escapeHTML(s.name)}
+            </b>
+
+            <div style="color:#aaa;font-size:12px;">
+                ${FLAGS[s.country]||"🌍"}
+                ${COUNTRY_NAMES[s.country]||""}
+                • 👥 ${s.players} hráčů
+            </div>
+
+            <small>
+                Server byl přidán do seznamu.
+            </small>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/*
+========================================
+ADMIN LIST
+========================================
+*/
+
+function renderAdmin(){
+
+    const list=document.getElementById("adminList");
+
+    if(!isAdmin()){
+        list.innerHTML="";
+        return;
+    }
+
+    if(servers.length===0){
+
+        list.innerHTML=
+        `<div class="empty">Žádné servery.</div>`;
+
+        return;
+    }
+
+    list.innerHTML=servers.map(s=>`
+
+        <div class="admin-item">
+
+            <div class="admin-item-info">
+
+                <b>
+                    ${FLAGS[s.country]||"🌍"}
+                    ${escapeHTML(s.name)}
+                </b>
+
+                <small>
+                    ${s.players} hráčů •
+                    ${getRating(s).toFixed(1)} ⭐ •
+                    ${s.votes?.length||0} hlasů
+                </small>
+
+            </div>
+
+            <div class="admin-item-actions">
+
+                <button
+                    class="btn-dark"
+                    onclick="editServer('${s.id}')"
+                >
+                    ✏️ Upravit
+                </button>
+
+                <button
+                    class="btn-red"
+                    onclick="deleteServer('${s.id}')"
+                >
+                    🗑️ Smazat
+                </button>
+
             </div>
 
         </div>
 
-        `).join("");
+    `).join("");
 
 }
 
-/* =========================
-   SAVE
-========================= */
 
-function save(){
+/*
+========================================
+FILTERS
+========================================
+*/
+
+function setCountry(country,button){
+
+    selectedCountry=country;
+
+    document
+        .querySelectorAll(".country-list button")
+        .forEach(b=>b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderServers();
+}
+
+function setSort(mode){
+
+    sortMode=mode;
+
+    renderServers();
+
+}
+
+
+/*
+========================================
+STATS
+========================================
+*/
+
+function renderStats(){
+
+    document.getElementById("serverCount").textContent=servers.length;
+
+    const total=servers.reduce(
+        (sum,s)=>sum+(Number(s.players)||0),
+        0
+    );
+
+    document.getElementById("playerCount").textContent=total;
+
+}
+
+
+/*
+========================================
+DATA SAVE
+========================================
+*/
+
+function saveData(){
 
     localStorage.setItem(
-        "eh_servers",
+        "ehServers",
         JSON.stringify(servers)
     );
 
+    renderStats();
+
 }
 
-/* =========================
-   SECURITY HELPERS
-========================= */
 
-function escapeHTML(text){
+/*
+========================================
+SECURITY / HTML ESCAPE
+========================================
+*/
 
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+function escapeHTML(value){
+
+    return String(value??"")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 function safeURL(url){
 
-    if(!url)return "#";
+    const value=String(url||"").trim();
 
-    if(
-        url.startsWith("https://") ||
-        url.startsWith("http://")
-    ){
-        return escapeHTML(url);
+    if(/^https?:\/\//i.test(value)){
+
+        return value
+            .replace(/&/g,"&amp;")
+            .replace(/"/g,"&quot;");
+
     }
 
     return "#";
 
 }
 
-/* =========================
-   START
-========================= */
 
+/*
+========================================
+START
+========================================
+*/
+
+renderStats();
 renderServers();
-
 renderAnnouncements();
+
+if(isAdmin()){
+    document.getElementById("adminDashboard").classList.add("show");
+    renderAdmin();
+}
 
 </script>
 
 </body>
 </html>
-```
