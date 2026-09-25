@@ -1,1 +1,1743 @@
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Emergency Hamburg RP — Server List</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:
+        radial-gradient(circle at top right,rgba(255,50,50,.18),transparent 35%),
+        radial-gradient(circle at bottom left,rgba(255,140,0,.10),transparent 35%),
+        #0b0d10;
+    color:white;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:18px 5%;
+    background:rgba(10,10,12,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#ff4040;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav-btn{
+    border:0;
+    background:#ff4040;
+    color:white;
+    padding:11px 15px;
+    border-radius:10px;
+    font-family:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.admin-btn{
+    background:#24282f;
+}
+
+.nav-btn:hover{
+    transform:translateY(-1px);
+    filter:brightness(1.1);
+}
+
+/* HERO */
+
+.hero{
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+    padding:65px 20px 35px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    border-radius:30px;
+    color:#ff6464;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(38px,7vw,70px);
+    line-height:1;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ff4040;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#aeb2b8;
+    line-height:1.7;
+}
+
+/* OZNAMENI */
+
+.announcements{
+    max-width:1100px;
+    margin:10px auto 30px;
+    padding:0 20px;
+}
+
+.announcement-box{
+    background:linear-gradient(
+        135deg,
+        rgba(255,64,64,.13),
+        rgba(255,255,255,.035)
+    );
+    border:1px solid rgba(255,64,64,.28);
+    border-radius:18px;
+    padding:20px;
+}
+
+.announcement-title{
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.announcement{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:13px 0;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.announcement:first-child{
+    border-top:0;
+}
+
+.announcement-name{
+    font-size:14px;
+    font-weight:700;
+}
+
+.announcement-text{
+    color:#92979e;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.new-label{
+    background:#ff4040;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:9px;
+    font-weight:800;
+    height:max-content;
+}
+
+/* CONTROLS */
+
+.controls{
+    max-width:1100px;
+    margin:auto;
+    padding:0 20px 30px;
+}
+
+.search{
+    width:100%;
+    padding:15px;
+    background:#15181d;
+    border:1px solid #292d34;
+    color:white;
+    border-radius:12px;
+    outline:0;
+    font-family:inherit;
+    margin-bottom:12px;
+}
+
+.search:focus{
+    border-color:#ff4040;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.filter{
+    border:1px solid #292d34;
+    background:#15181d;
+    color:#bbbfc5;
+    padding:9px 12px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+    background:#ff4040;
+    color:white;
+    border-color:#ff4040;
+}
+
+/* SERVER */
+
+.server-list{
+    max-width:1100px;
+    margin:auto;
+    padding:0 20px 70px;
+}
+
+.server-card{
+    background:linear-gradient(145deg,#171a20,#111318);
+    border:1px solid #292d34;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:15px;
+    transition:.2s;
+}
+
+.server-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(255,64,64,.5);
+}
+
+.server-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.server-name{
+    font-size:20px;
+    font-weight:800;
+}
+
+.owner{
+    color:#8e949c;
+    font-size:12px;
+    margin-top:6px;
+}
+
+.description{
+    color:#b6bac0;
+    font-size:14px;
+    line-height:1.6;
+    margin-top:15px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:15px;
+}
+
+.tag{
+    background:rgba(255,255,255,.06);
+    color:#c7cbd0;
+    padding:6px 9px;
+    border-radius:7px;
+    font-size:11px;
+}
+
+.rating{
+    min-width:125px;
+    text-align:right;
+}
+
+.stars{
+    color:#ffc107;
+    font-size:19px;
+}
+
+.rating-number{
+    color:#999ea5;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.server-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.vote-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.vote{
+    border:1px solid #343941;
+    background:#1d2127;
+    color:#ddd;
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.vote:hover{
+    border-color:#ff4040;
+}
+
+.discord{
+    background:#5865f2;
+    color:white;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.empty{
+    text-align:center;
+    color:#777d85;
+    padding:50px 20px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:500;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(7px);
+    padding:20px;
+    overflow:auto;
+}
+
+.modal-content{
+    max-width:540px;
+    margin:40px auto;
+    background:#15181d;
+    border:1px solid #30343c;
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:17px;
+    top:12px;
+    border:0;
+    background:none;
+    color:#aaa;
+    font-size:27px;
+    cursor:pointer;
+}
+
+.modal h2{
+    margin-bottom:8px;
+}
+
+.modal-info{
+    color:#8f949b;
+    font-size:12px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.form-input,
+.form-select,
+.form-textarea{
+    width:100%;
+    background:#0e1013;
+    border:1px solid #30343c;
+    color:white;
+    padding:13px;
+    border-radius:10px;
+    margin-bottom:12px;
+    outline:none;
+    font-family:inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus{
+    border-color:#ff4040;
+}
+
+.form-textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.submit{
+    width:100%;
+    padding:14px;
+    background:#ff4040;
+    border:0;
+    color:white;
+    font-weight:800;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* ADMIN */
+
+.admin-panel{
+    display:none;
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 20px 70px;
+}
+
+.admin-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.admin-header h2{
+    font-size:25px;
+}
+
+.logout{
+    background:#292d34;
+    border:0;
+    color:white;
+    padding:10px 14px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.admin-card{
+    background:#15181d;
+    border:1px solid #292d34;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:12px;
+}
+
+.admin-card-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.admin-name{
+    font-weight:800;
+}
+
+.admin-actions{
+    display:flex;
+    gap:7px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
+
+.edit-btn,
+.delete-btn{
+    border:0;
+    color:white;
+    padding:9px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:inherit;
+    font-weight:700;
+}
+
+.edit-btn{
+    background:#3a6ff7;
+}
+
+.delete-btn{
+    background:#d93636;
+}
+
+.admin-notice{
+    color:#9ba0a7;
+    font-size:12px;
+    line-height:1.6;
+    margin-top:8px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:#656a72;
+    font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    .logo{
+        font-size:15px;
+    }
+
+    .nav-buttons{
+        flex-direction:column;
+    }
+
+    .nav-btn{
+        padding:8px 10px;
+        font-size:10px;
+    }
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .server-top{
+        flex-direction:column;
+    }
+
+    .rating{
+        text-align:left;
+    }
+
+    .server-bottom{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .discord{
+        text-align:center;
+    }
+
+    .admin-header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav">
+
+        <div class="logo">
+            🚨 Emergency <span>Hamburg</span> RP
+        </div>
+
+        <div class="nav-buttons">
+
+            <button class="nav-btn"
+                    onclick="openAddModal()">
+                + Přidat server
+            </button>
+
+            <button class="nav-btn admin-btn"
+                    onclick="openLogin()">
+                🔐 Administrace
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section class="hero">
+
+    <div class="badge">
+        COMMUNITY SERVER LIST
+    </div>
+
+    <h1>
+        Emergency Hamburg<br>
+        <span>Server List</span>
+    </h1>
+
+    <p>
+        Najdi komunitní server, prohlédni si jeho hodnocení
+        a vyber si server, který ti vyhovuje.
+    </p>
+
+</section>
+
+<!-- OZNÁMENÍ -->
+
+<section class="announcements">
+
+    <div class="announcement-box">
+
+        <div class="announcement-title">
+            📢 Oznámení
+        </div>
+
+        <div id="announcements"></div>
+
+    </div>
+
+</section>
+
+<!-- VYHLEDÁVÁNÍ -->
+
+<div class="controls">
+
+    <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="🔎 Hledat server..."
+        oninput="renderServers()"
+    >
+
+    <div class="filters">
+
+        <button class="filter active"
+                onclick="setFilter('all',this)">
+            🌍 Vše
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('cz',this)">
+            🇨🇿 CZ
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('sk',this)">
+            🇸🇰 SK
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('de',this)">
+            🇩🇪 DE
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('at',this)">
+            🇦🇹 AT
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('pl',this)">
+            🇵🇱 PL
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('hu',this)">
+            🇭🇺 HU
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('ch',this)">
+            🇨🇭 CH
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('fr',this)">
+            🇫🇷 FR
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('it',this)">
+            🇮🇹 IT
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('gb',this)">
+            🇬🇧 UK
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('us',this)">
+            🇺🇸 USA
+        </button>
+
+        <button class="filter"
+                onclick="setFilter('top',this)">
+            ⭐ Nejlépe hodnocené
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SEZNAM -->
+
+<main class="server-list" id="serverList"></main>
+
+<!-- ADMIN PANEL -->
+
+<section class="admin-panel" id="adminPanel">
+
+    <div class="admin-header">
+
+        <div>
+            <h2>🛠️ Administrace</h2>
+
+            <div class="admin-notice">
+                Jsi přihlášen jako administrátor.
+                Zde můžeš upravovat a mazat servery.
+            </div>
+        </div>
+
+        <button class="logout"
+                onclick="logout()">
+            Odhlásit
+        </button>
+
+    </div>
+
+    <div id="adminServers"></div>
+
+</section>
+
+<footer>
+
+    Emergency Hamburg RP Server List © 2026
+
+    <br><br>
+
+    Neoficiální komunitní projekt.
+
+</footer>
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+    <div class="modal-content">
+
+        <button class="close"
+                onclick="closeLogin()">
+            ×
+        </button>
+
+        <h2>🔐 Administrace</h2>
+
+        <p class="modal-info">
+            Přihlášení do administrace server listu.
+        </p>
+
+        <input
+            class="form-input"
+            id="loginName"
+            placeholder="Uživatelské jméno"
+        >
+
+        <input
+            class="form-input"
+            id="loginPassword"
+            type="password"
+            placeholder="Heslo"
+        >
+
+        <button class="submit"
+                onclick="login()">
+            Přihlásit se
+        </button>
+
+    </div>
+
+</div>
+
+<!-- SERVER MODAL -->
+
+<div class="modal" id="serverModal">
+
+    <div class="modal-content">
+
+        <button class="close"
+                onclick="closeServerModal()">
+            ×
+        </button>
+
+        <h2 id="serverModalTitle">
+            ➕ Přidat server
+        </h2>
+
+        <p class="modal-info">
+            Vyplň informace o Emergency Hamburg RP serveru.
+        </p>
+
+        <input
+            class="form-input"
+            id="serverName"
+            placeholder="Název serveru"
+        >
+
+        <input
+            class="form-input"
+            id="serverOwner"
+            placeholder="Majitel / vedení"
+        >
+
+        <select
+            class="form-select"
+            id="serverCountry">
+
+            <option value="cz">🇨🇿 Česko</option>
+            <option value="sk">🇸🇰 Slovensko</option>
+            <option value="de">🇩🇪 Německo</option>
+            <option value="at">🇦🇹 Rakousko</option>
+            <option value="pl">🇵🇱 Polsko</option>
+            <option value="hu">🇭🇺 Maďarsko</option>
+            <option value="ch">🇨🇭 Švýcarsko</option>
+            <option value="fr">🇫🇷 Francie</option>
+            <option value="it">🇮🇹 Itálie</option>
+            <option value="gb">🇬🇧 Velká Británie</option>
+            <option value="us">🇺🇸 USA</option>
+
+        </select>
+
+        <input
+            class="form-input"
+            id="serverDiscord"
+            placeholder="Discord odkaz"
+        >
+
+        <textarea
+            class="form-textarea"
+            id="serverDescription"
+            placeholder="Popis serveru..."
+        ></textarea>
+
+        <button
+            class="submit"
+            onclick="saveServer()">
+            Uložit server
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   DATA
+========================= */
+
+let servers = [];
+
+let filter = "all";
+
+let editingId = null;
+
+let adminLogged = false;
+
+/*
+   ŽÁDNÉ UKÁZKOVÉ SERVERY.
+   Seznam začíná prázdný.
+*/
+
+const savedServers =
+    localStorage.getItem("eh_servers");
+
+if(savedServers){
+
+    try{
+        servers = JSON.parse(savedServers);
+    }catch(e){
+        servers = [];
+    }
+
+}
+
+/* =========================
+   COUNTRIES
+========================= */
+
+function countryName(country){
+
+    const countries = {
+
+        cz:"🇨🇿 CZ",
+        sk:"🇸🇰 SK",
+        de:"🇩🇪 DE",
+        at:"🇦🇹 AT",
+        pl:"🇵🇱 PL",
+        hu:"🇭🇺 HU",
+        ch:"🇨🇭 CH",
+        fr:"🇫🇷 FR",
+        it:"🇮🇹 IT",
+        gb:"🇬🇧 UK",
+        us:"🇺🇸 USA"
+
+    };
+
+    return countries[country] || "🌍";
+
+}
+
+/* =========================
+   RATING
+========================= */
+
+function getRating(server){
+
+    if(!server.votes || !server.votes.length){
+        return 0;
+    }
+
+    return server.votes.reduce(
+        (a,b)=>a+b,0
+    ) / server.votes.length;
+
+}
+
+function stars(rating){
+
+    let result = "";
+
+    for(let i=1;i<=5;i++){
+
+        result +=
+            i <= Math.round(rating)
+            ? "★"
+            : "☆";
+
+    }
+
+    return result;
+
+}
+
+/* =========================
+   SERVER LIST
+========================= */
+
+function renderServers(){
+
+    const list =
+        document.getElementById("serverList");
+
+    const search =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let result =
+        servers.filter(server=>{
+
+            const text =
+                (
+                    server.name +
+                    " " +
+                    server.owner +
+                    " " +
+                    server.description
+                ).toLowerCase();
+
+            const searchMatch =
+                text.includes(search);
+
+            let filterMatch = true;
+
+            if(
+                filter !== "all" &&
+                filter !== "top"
+            ){
+                filterMatch =
+                    server.country === filter;
+            }
+
+            return searchMatch &&
+                   filterMatch;
+
+        });
+
+    if(filter === "top"){
+
+        result.sort(
+            (a,b)=>
+                getRating(b)-getRating(a)
+        );
+
+    }
+
+    if(!result.length){
+
+        list.innerHTML = `
+            <div class="empty">
+                🖥️<br><br>
+                Zatím zde nejsou žádné servery.
+                <br><br>
+                Přidej první server pomocí tlačítka
+                <b>+ Přidat server</b>.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    list.innerHTML =
+        result.map(server=>{
+
+            const rating =
+                getRating(server);
+
+            return `
+
+            <article class="server-card">
+
+                <div class="server-top">
+
+                    <div>
+
+                        <div class="server-name">
+                            ${escapeHTML(server.name)}
+                        </div>
+
+                        <div class="owner">
+                            👤 ${escapeHTML(server.owner)}
+                        </div>
+
+                    </div>
+
+                    <div class="rating">
+
+                        <div class="stars">
+                            ${stars(rating)}
+                        </div>
+
+                        <div class="rating-number">
+
+                            ${
+                                rating
+                                ? rating.toFixed(1)
+                                : "0.0"
+                            }
+                            / 5
+
+                            •
+                            ${server.votes.length}
+                            hlasů
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="description">
+                    ${escapeHTML(server.description)}
+                </div>
+
+                <div class="tags">
+
+                    <span class="tag">
+                        ${countryName(server.country)}
+                    </span>
+
+                    <span class="tag">
+                        🎮 Emergency Hamburg RP
+                    </span>
+
+                </div>
+
+                <div class="server-bottom">
+
+                    <div class="vote-box">
+
+                        ${[1,2,3,4,5]
+                            .map(n=>`
+
+                            <button
+                                class="vote"
+                                onclick="vote(${server.id},${n})">
+
+                                ⭐ ${n}
+
+                            </button>
+
+                        `).join("")}
+
+                    </div>
+
+                    <a
+                        class="discord"
+                        href="${safeURL(server.discord)}"
+                        target="_blank"
+                        rel="noopener">
+
+                        Discord →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            `;
+
+        }).join("");
+
+}
+
+/* =========================
+   VOTING
+========================= */
+
+function vote(id,rating){
+
+    const key =
+        "voted_" + id;
+
+    if(localStorage.getItem(key)){
+
+        alert(
+            "U tohoto serveru už jsi hlasoval."
+        );
+
+        return;
+
+    }
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    if(!server.votes){
+        server.votes=[];
+    }
+
+    server.votes.push(rating);
+
+    localStorage.setItem(
+        key,
+        "true"
+    );
+
+    save();
+
+    renderServers();
+
+}
+
+/* =========================
+   FILTER
+========================= */
+
+function setFilter(type,button){
+
+    filter = type;
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(
+            b=>b.classList.remove("active")
+        );
+
+    button.classList.add("active");
+
+    renderServers();
+
+}
+
+/* =========================
+   SERVER MODAL
+========================= */
+
+function openAddModal(){
+
+    editingId = null;
+
+    document.getElementById(
+        "serverModalTitle"
+    ).innerText =
+        "➕ Přidat server";
+
+    clearForm();
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="block";
+
+}
+
+function closeServerModal(){
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="none";
+
+}
+
+function clearForm(){
+
+    document.getElementById("serverName").value="";
+    document.getElementById("serverOwner").value="";
+    document.getElementById("serverDiscord").value="";
+    document.getElementById("serverDescription").value="";
+    document.getElementById("serverCountry").value="cz";
+
+}
+
+/* =========================
+   SAVE SERVER
+========================= */
+
+function saveServer(){
+
+    const name =
+        document.getElementById(
+            "serverName"
+        ).value.trim();
+
+    const owner =
+        document.getElementById(
+            "serverOwner"
+        ).value.trim();
+
+    const country =
+        document.getElementById(
+            "serverCountry"
+        ).value;
+
+    const discord =
+        document.getElementById(
+            "serverDiscord"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "serverDescription"
+        ).value.trim();
+
+    if(!name || !owner || !description){
+
+        alert(
+            "Vyplň název, majitele a popis."
+        );
+
+        return;
+
+    }
+
+    if(editingId){
+
+        const server =
+            servers.find(
+                s=>s.id===editingId
+            );
+
+        if(server){
+
+            server.name=name;
+            server.owner=owner;
+            server.country=country;
+            server.discord=discord;
+            server.description=description;
+
+        }
+
+    }else{
+
+        servers.push({
+
+            id:Date.now(),
+
+            name:name,
+
+            owner:owner,
+
+            country:country,
+
+            discord:
+                discord ||
+                "https://discord.com/",
+
+            description:description,
+
+            votes:[],
+
+            created:Date.now()
+
+        });
+
+    }
+
+    save();
+
+    renderServers();
+
+    renderAnnouncements();
+
+    renderAdmin();
+
+    closeServerModal();
+
+    clearForm();
+
+}
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+function openLogin(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="block";
+
+}
+
+function closeLogin(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="none";
+
+}
+
+function login(){
+
+    const name =
+        document.getElementById(
+            "loginName"
+        ).value;
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+    /*
+       ADMIN LOGIN
+    */
+
+    if(
+        name === "Dolkys" &&
+        password === "Doljan4200"
+    ){
+
+        adminLogged=true;
+
+        closeLogin();
+
+        document.getElementById(
+            "adminPanel"
+        ).style.display="block";
+
+        document.getElementById(
+            "serverList"
+        ).style.display="none";
+
+        document.querySelector(
+            ".controls"
+        ).style.display="none";
+
+        document.querySelector(
+            ".announcements"
+        ).style.display="none";
+
+        renderAdmin();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        alert(
+            "❌ Špatné uživatelské jméno nebo heslo."
+        );
+
+    }
+
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    adminLogged=false;
+
+    document.getElementById(
+        "adminPanel"
+    ).style.display="none";
+
+    document.getElementById(
+        "serverList"
+    ).style.display="block";
+
+    document.querySelector(
+        ".controls"
+    ).style.display="block";
+
+    document.querySelector(
+        ".announcements"
+    ).style.display="block";
+
+}
+
+/* =========================
+   ADMIN SERVER LIST
+========================= */
+
+function renderAdmin(){
+
+    const box =
+        document.getElementById(
+            "adminServers"
+        );
+
+    if(!servers.length){
+
+        box.innerHTML=`
+
+            <div class="admin-card">
+
+                <b>📭 Žádné servery</b>
+
+                <div class="admin-notice">
+                    Zatím nebyl přidán žádný server.
+                </div>
+
+                <div class="admin-actions">
+
+                    <button
+                        class="edit-btn"
+                        onclick="openAddModal()">
+
+                        + Přidat server
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    box.innerHTML =
+        servers.map(server=>`
+
+        <div class="admin-card">
+
+            <div class="admin-card-top">
+
+                <div>
+
+                    <div class="admin-name">
+                        ${escapeHTML(server.name)}
+                    </div>
+
+                    <div class="admin-notice">
+                        👤 ${escapeHTML(server.owner)}
+                        <br>
+                        ${countryName(server.country)}
+                        <br>
+                        ⭐ ${getRating(server).toFixed(1)}
+                        / 5
+                        • ${server.votes.length} hlasů
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="admin-actions">
+
+                <button
+                    class="edit-btn"
+                    onclick="editServer(${server.id})">
+
+                    ✏️ Upravit
+
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteServer(${server.id})">
+
+                    🗑️ Smazat
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+/* =========================
+   EDIT
+========================= */
+
+function editServer(id){
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    editingId=id;
+
+    document.getElementById(
+        "serverModalTitle"
+    ).innerText =
+        "✏️ Upravit server";
+
+    document.getElementById(
+        "serverName"
+    ).value=server.name;
+
+    document.getElementById(
+        "serverOwner"
+    ).value=server.owner;
+
+    document.getElementById(
+        "serverCountry"
+    ).value=server.country;
+
+    document.getElementById(
+        "serverDiscord"
+    ).value=server.discord;
+
+    document.getElementById(
+        "serverDescription"
+    ).value=server.description;
+
+    document.getElementById(
+        "serverModal"
+    ).style.display="block";
+
+}
+
+/* =========================
+   DELETE
+========================= */
+
+function deleteServer(id){
+
+    const server =
+        servers.find(
+            s=>s.id===id
+        );
+
+    if(!server)return;
+
+    const yes =
+        confirm(
+            "Opravdu chceš smazat server:\n\n" +
+            server.name
+        );
+
+    if(!yes)return;
+
+    servers =
+        servers.filter(
+            s=>s.id!==id
+        );
+
+    save();
+
+    renderAdmin();
+
+    renderServers();
+
+    renderAnnouncements();
+
+}
+
+/* =========================
+   ANNOUNCEMENTS
+========================= */
+
+function renderAnnouncements(){
+
+    const box =
+        document.getElementById(
+            "announcements"
+        );
+
+    if(!servers.length){
+
+        box.innerHTML=`
+
+            <div class="announcement">
+
+                <div>
+
+                    <div class="announcement-name">
+                        Zatím žádná oznámení
+                    </div>
+
+                    <div class="announcement-text">
+                        Nově přidané servery se zde zobrazí automaticky.
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    const newest =
+        [...servers]
+        .sort(
+            (a,b)=>
+                (b.created||0) -
+                (a.created||0)
+        )
+        .slice(0,5);
+
+    box.innerHTML =
+        newest.map(server=>`
+
+        <div class="announcement">
+
+            <div>
+
+                <div class="announcement-name">
+
+                    🆕
+                    ${escapeHTML(server.name)}
+
+                </div>
+
+                <div class="announcement-text">
+
+                    Nově přidaný server
+                    •
+                    ${countryName(server.country)}
+
+                </div>
+
+            </div>
+
+            <div class="new-label">
+                NOVÉ
+            </div>
+
+        </div>
+
+        `).join("");
+
+}
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+
+    localStorage.setItem(
+        "eh_servers",
+        JSON.stringify(servers)
+    );
+
+}
+
+/* =========================
+   SECURITY HELPERS
+========================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+function safeURL(url){
+
+    if(!url)return "#";
+
+    if(
+        url.startsWith("https://") ||
+        url.startsWith("http://")
+    ){
+        return escapeHTML(url);
+    }
+
+    return "#";
+
+}
+
+/* =========================
+   START
+========================= */
+
+renderServers();
+
+renderAnnouncements();
+
+</script>
+
+</body>
+</html>
+```
 
