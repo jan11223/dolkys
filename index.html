@@ -1,1620 +1,1040 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emergency Hamburg RP — Server List</title>
+<meta name="theme-color" content="#070812">
+
+<title>HORIZON RP | CZ/SK</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+:root {
+  --bg: #070812;
+  --blue: #637bff;
+  --purple: #9b6dff;
+  --white: #f5f6ff;
+  --muted: #9ba0b8;
 }
 
-body{
-    font-family:'Montserrat',sans-serif;
-    background:
-        radial-gradient(circle at top left,rgba(180,0,0,.22),transparent 35%),
-        radial-gradient(circle at bottom right,rgba(255,50,50,.12),transparent 30%),
-        #090909;
-    color:white;
-    min-height:100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(10,10,10,.94);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid #292929;
-    padding:15px 5%;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
-.nav{
-    max-width:1250px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
 }
 
-.logo{
-    font-size:21px;
-    font-weight:800;
+button, a {
+  font-family: inherit;
 }
 
-.logo span{
-    color:#ff3030;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.nav-buttons{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
+::selection {
+  background: #7885ff;
+  color: white;
 }
 
-button,
-.btn{
-    border:none;
-    border-radius:10px;
-    padding:11px 16px;
-    font-family:inherit;
-    font-weight:700;
-    cursor:pointer;
-    transition:.2s;
-}
+/* BACKGROUND */
 
-button:hover,
-.btn:hover{
-    transform:translateY(-2px);
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse at 20% 20%, #22245b 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 80%, #30184d 0%, transparent 40%),
+    #070812;
 }
 
-.btn-red{
-    background:#e52323;
-    color:white;
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to bottom, black, transparent);
 }
 
-.btn-dark{
-    background:#1b1b1b;
-    color:white;
-    border:1px solid #333;
+.orb {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: .25;
+  pointer-events: none;
+  z-index: -1;
+  animation: orbMove 12s ease-in-out infinite alternate;
+}
+
+.orb.one {
+  background: #445eff;
+  top: 5%;
+  left: -150px;
 }
 
-.container{
-    max-width:1250px;
-    margin:auto;
-    padding:30px 5%;
+.orb.two {
+  background: #8d38db;
+  right: -180px;
+  bottom: 5%;
+  animation-delay: -5s;
 }
 
-.hero{
-    padding:55px 0 35px;
+@keyframes orbMove {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(80px,-50px) scale(1.3); }
+}
+
+/* PARTICLES */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #a9b6ff;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 12px #788cff;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(110vh) scale(.4);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  85% { opacity: .5; }
+  100% {
+    transform: translateY(-10vh) scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* INTRO */
+
+.intro {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  position: relative;
+}
+
+.intro-content {
+  width: 100%;
+  max-width: 900px;
+  animation: introAppear 1.5s ease both;
+}
+
+@keyframes introAppear {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.logo-symbol {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 35px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(143,158,255,.45);
+  border-radius: 28px;
+  background: linear-gradient(145deg, #252b59, #101222);
+  box-shadow: 0 0 70px rgba(95,112,255,.3);
+  font-size: 38px;
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.eyebrow {
+  color: #a7b0ff;
+  letter-spacing: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.intro h1 {
+  font-size: clamp(45px, 10vw, 105px);
+  font-weight: 900;
+  letter-spacing: -5px;
+  line-height: .95;
+  background: linear-gradient(110deg, #fff 15%, #9baaff 48%, #c58aff 85%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.intro h2 {
+  font-size: clamp(14px, 3vw, 21px);
+  letter-spacing: 9px;
+  color: #aab0ce;
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+.intro-description {
+  color: #a4a8bf;
+  max-width: 480px;
+  margin: 30px auto 42px;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.enter-btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 35px;
+  min-width: 250px;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 12px;
+  background: linear-gradient(110deg, #5269ee, #8152d9);
+  box-shadow: 0 0 35px rgba(91,106,255,.35);
+  overflow: hidden;
+  transition: .4s;
 }
 
-.badge{
-    display:inline-block;
-    padding:8px 13px;
-    border-radius:20px;
-    background:#351313;
-    color:#ff6666;
-    border:1px solid #612020;
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:15px;
+.enter-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-20deg);
+  transition: .7s;
 }
 
-.hero h1{
-    font-size:clamp(32px,6vw,64px);
-    line-height:1.05;
-    margin-bottom:15px;
+.enter-btn:hover::before {
+  left: 140%;
 }
 
-.hero h1 span{
-    color:#ff3030;
+.enter-btn:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 0 60px rgba(112,119,255,.65);
 }
 
-.hero p{
-    max-width:700px;
-    color:#aaa;
-    line-height:1.7;
+.enter-btn span {
+  transition: transform .3s;
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin:25px 0 40px;
+.enter-btn:hover span {
+  transform: translateX(5px);
 }
 
-.stat{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:15px;
-    padding:20px;
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  color: #737991;
+  font-size: 10px;
+  letter-spacing: 3px;
+  animation: hint 2s infinite;
 }
 
-.stat strong{
-    display:block;
-    font-size:28px;
-    color:#ff3939;
+@keyframes hint {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50% { transform: translateY(8px); opacity: 1; }
 }
 
-.stat span{
-    color:#999;
-    font-size:13px;
-}
+/* NAVBAR */
 
-.section-title{
-    margin-bottom:15px;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: rgba(7,8,18,.78);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
 }
 
-.section-title h2{
-    font-size:25px;
+.nav-logo {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
-.section-title p{
-    color:#888;
-    margin-top:5px;
+.nav-logo span {
+  color: #8995ff;
 }
 
-.announcements{
-    display:grid;
-    gap:10px;
-    margin-bottom:40px;
+.nav-links {
+  display: flex;
+  gap: 27px;
+  align-items: center;
 }
 
-.announcement{
-    background:#111;
-    border:1px solid #292929;
-    border-left:4px solid #e52323;
-    border-radius:12px;
-    padding:15px;
+.nav-links a {
+  font-size: 11px;
+  color: #b3b7cb;
+  transition: .3s;
 }
 
-.announcement b{
-    display:block;
-    margin-bottom:5px;
+.nav-links a:hover {
+  color: white;
 }
 
-.announcement small{
-    color:#777;
+.nav-discord {
+  padding: 12px 18px;
+  background: #5865f2;
+  border-radius: 8px;
+  color: white !important;
 }
 
-.controls{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-}
+/* MAIN */
 
-.search{
-    flex:1;
-    min-width:220px;
-    background:#111;
-    border:1px solid #333;
-    border-radius:10px;
-    padding:12px 15px;
-    color:white;
-    font-family:inherit;
-    outline:none;
+main {
+  display: none;
+  animation: mainAppear 1s ease both;
 }
 
-.country-list{
-    display:flex;
-    gap:7px;
-    overflow-x:auto;
-    padding-bottom:10px;
-    margin-bottom:20px;
+main.visible {
+  display: block;
 }
 
-.country-list button{
-    white-space:nowrap;
-    background:#141414;
-    border:1px solid #303030;
-    color:#ddd;
+@keyframes mainAppear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.country-list button.active{
-    background:#e52323;
-    border-color:#e52323;
-    color:white;
+.section {
+  max-width: 1150px;
+  margin: auto;
+  padding: 110px 25px;
 }
 
-.servers{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-    gap:18px;
+.section-label {
+  color: #8996ff;
+  font-size: 10px;
+  letter-spacing: 5px;
+  font-weight: 800;
+  margin-bottom: 18px;
 }
 
-.server{
-    background:linear-gradient(145deg,#151515,#0e0e0e);
-    border:1px solid #292929;
-    border-radius:17px;
-    padding:20px;
-    position:relative;
-    overflow:hidden;
-    transition:.25s;
+.section-title {
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
 }
 
-.server:hover{
-    transform:translateY(-4px);
-    border-color:#622222;
+.section-title span {
+  color: #8996ff;
 }
 
-.server-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    align-items:flex-start;
+.section-text {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2.1;
+  max-width: 700px;
 }
 
-.server-name{
-    font-size:20px;
-    font-weight:800;
-}
+/* HERO CONTENT */
 
-.country{
-    font-size:13px;
-    color:#aaa;
-    margin-top:6px;
+.welcome {
+  min-height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  position: relative;
 }
 
-.new{
-    background:#e52323;
-    padding:5px 8px;
-    border-radius:7px;
-    font-size:10px;
-    font-weight:800;
+.welcome::after {
+  content: "H";
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(220px, 40vw, 480px);
+  font-weight: 900;
+  color: rgba(128,139,255,.035);
+  pointer-events: none;
 }
 
-.server-desc{
-    color:#999;
-    line-height:1.5;
-    font-size:13px;
-    margin:15px 0;
+.welcome-content {
+  position: relative;
+  z-index: 1;
 }
 
-.server-info{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
-}
+/* CARDS */
 
-.info{
-    background:#191919;
-    border:1px solid #2d2d2d;
-    border-radius:8px;
-    padding:7px 9px;
-    color:#ccc;
-    font-size:12px;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 45px;
 }
 
-.rating{
-    color:#ffc400;
-    letter-spacing:2px;
-    margin-bottom:5px;
+.card {
+  position: relative;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(155,165,255,.13);
+  background: linear-gradient(145deg, rgba(29,32,57,.8), rgba(13,14,27,.85));
+  transition: .4s;
+  overflow: hidden;
 }
 
-.rating-info{
-    color:#777;
-    font-size:11px;
-    margin-bottom:13px;
+.card::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #6678ff;
+  filter: blur(100px);
+  opacity: 0;
+  right: -50px;
+  top: -50px;
+  transition: .5s;
 }
 
-.server-buttons{
-    display:flex;
-    gap:8px;
+.card:hover {
+  transform: translateY(-9px);
+  border-color: rgba(135,148,255,.55);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
 }
 
-.server-buttons a{
-    flex:1;
-    text-align:center;
-    text-decoration:none;
+.card:hover::before {
+  opacity: .35;
 }
 
-.vote-area{
-    margin-top:15px;
-    padding-top:15px;
-    border-top:1px solid #292929;
+.card-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(105,119,255,.15);
+  font-size: 22px;
+  margin-bottom: 25px;
 }
 
-.vote-area p{
-    color:#888;
-    font-size:11px;
-    margin-bottom:8px;
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 13px;
 }
 
-.vote-buttons{
-    display:flex;
-    gap:5px;
+.card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
 }
+
+/* STATS */
 
-.vote-buttons button{
-    flex:1;
-    padding:8px 3px;
-    background:#1c1c1c;
-    color:#ffc400;
-    border:1px solid #333;
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 40px;
 }
 
-.vote-buttons button:hover{
-    background:#332d12;
+.stat {
+  padding: 30px 15px;
+  text-align: center;
+  border-top: 1px solid rgba(140,151,255,.25);
+  border-bottom: 1px solid rgba(140,151,255,.12);
+  background: rgba(255,255,255,.018);
 }
 
-.empty{
-    text-align:center;
-    color:#777;
-    padding:50px;
-    background:#111;
-    border-radius:15px;
-    border:1px solid #292929;
+.stat strong {
+  display: block;
+  font-size: 29px;
+  color: #a1aaff;
+  margin-bottom: 10px;
 }
 
-footer{
-    text-align:center;
-    padding:40px 20px;
-    color:#666;
-    font-size:12px;
+.stat span {
+  color: #999eb5;
+  font-size: 10px;
+  letter-spacing: 2px;
 }
 
-/* MODALS */
+/* RULES */
 
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:500;
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(8px);
-    align-items:center;
-    justify-content:center;
-    padding:15px;
+.rules-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 35px;
 }
 
-.modal.show{
-    display:flex;
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+  transition: .3s;
 }
 
-.modal-box{
-    width:min(600px,100%);
-    max-height:90vh;
-    overflow-y:auto;
-    background:#111;
-    border:1px solid #333;
-    border-radius:18px;
-    padding:25px;
-    position:relative;
+.rule:hover {
+  background: rgba(105,119,255,.08);
+  transform: translateX(5px);
 }
 
-.close{
-    position:absolute;
-    top:12px;
-    right:12px;
-    background:#222;
-    color:white;
-    border:1px solid #333;
-    border-radius:50%;
-    width:35px;
-    height:35px;
-    padding:0;
+.rule-number {
+  color: #8795ff;
+  font-size: 13px;
+  font-weight: 800;
 }
 
-.modal h2{
-    margin-bottom:20px;
+.rule span:last-child {
+  font-size: 12px;
+  color: #c3c6d8;
 }
 
-.form{
-    display:grid;
-    gap:12px;
-}
+/* TEAM */
 
-.form label{
-    font-size:12px;
-    color:#aaa;
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+  margin-top: 35px;
 }
 
-.form input,
-.form textarea,
-.form select{
-    width:100%;
-    margin-top:5px;
-    padding:12px;
-    background:#191919;
-    border:1px solid #333;
-    color:white;
-    border-radius:9px;
-    font-family:inherit;
-    outline:none;
+.team-card {
+  padding: 25px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 15px;
+  background: linear-gradient(150deg, #1a1c31, #10111f);
+  transition: .35s;
 }
 
-.form textarea{
-    min-height:90px;
-    resize:vertical;
+.team-card:hover {
+  transform: translateY(-7px);
+  border-color: #697aff;
 }
 
-.form button{
-    margin-top:5px;
+.team-avatar {
+  width: 65px;
+  height: 65px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 17px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #637bff, #9a5fe0);
+  font-size: 23px;
+  box-shadow: 0 0 25px rgba(103,121,255,.25);
 }
 
-/* ADMIN */
-
-.admin-dashboard{
-    display:none;
-    margin-bottom:30px;
+.team-card h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
-.admin-dashboard.show{
-    display:block;
+.team-card p {
+  font-size: 10px;
+  color: #9da4c2;
 }
 
-.admin-head{
-    background:linear-gradient(135deg,#351010,#171010);
-    border:1px solid #662222;
-    border-radius:17px;
-    padding:20px;
-    margin-bottom:15px;
-}
+/* CTA */
 
-.admin-head h2{
-    color:#ff4545;
+.discord-box {
+  text-align: center;
+  padding: 75px 25px;
+  border: 1px solid rgba(132,146,255,.2);
+  border-radius: 25px;
+  background:
+    radial-gradient(ellipse at center, rgba(85,99,206,.18), transparent 70%),
+    #101120;
+  box-shadow: 0 0 80px rgba(68,76,170,.08);
 }
 
-.admin-head p{
-    color:#aaa;
-    margin-top:5px;
-    font-size:13px;
+.discord-box h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  margin-bottom: 18px;
 }
 
-.admin-actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+.discord-box p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+  margin-bottom: 30px;
 }
 
-.admin-list{
-    display:grid;
-    gap:10px;
+.discord-button {
+  display: inline-block;
+  background: #5865f2;
+  color: white;
+  padding: 17px 28px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  transition: .3s;
+  box-shadow: 0 10px 30px rgba(88,101,242,.2);
 }
 
-.admin-item{
-    background:#111;
-    border:1px solid #292929;
-    padding:15px;
-    border-radius:12px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
+.discord-button:hover {
+  transform: translateY(-5px);
+  background: #7180ff;
+  box-shadow: 0 15px 40px rgba(88,101,242,.4);
 }
 
-.admin-item-info{
-    flex:1;
-}
+/* FOOTER */
 
-.admin-item-info b{
-    display:block;
+footer {
+  padding: 35px 20px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+  color: #777d95;
+  font-size: 10px;
+  line-height: 2.2;
 }
 
-.admin-item-info small{
-    color:#777;
+footer strong {
+  color: #a5adff;
 }
+
+/* REVEAL */
 
-.admin-item-actions{
-    display:flex;
-    gap:5px;
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
 }
 
-.admin-item-actions button{
-    padding:8px 10px;
-    font-size:12px;
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@media(max-width:700px){
+/* RESPONSIVE */
 
-    header{
-        padding:12px 4%;
-    }
+@media(max-width: 750px) {
+  .nav-links {
+    gap: 12px;
+  }
 
-    .nav{
-        align-items:flex-start;
-        flex-direction:column;
-    }
+  .nav-links a:not(.nav-discord) {
+    display: none;
+  }
 
-    .nav-buttons{
-        width:100%;
-    }
+  .navbar {
+    padding: 16px 20px;
+  }
 
-    .nav-buttons button{
-        flex:1;
-    }
+  .cards,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .hero{
-        padding-top:35px;
-    }
+  .rules-list {
+    grid-template-columns: 1fr;
+  }
 
-    .stats{
-        grid-template-columns:1fr;
-    }
+  .stats {
+    grid-template-columns: 1fr;
+  }
 
-    .servers{
-        grid-template-columns:1fr;
-    }
+  .section {
+    padding: 80px 20px;
+  }
 
-    .admin-item{
-        align-items:flex-start;
-        flex-direction:column;
-    }
+  .intro h1 {
+    letter-spacing: -3px;
+  }
 
-    .admin-item-actions{
-        width:100%;
-    }
+  .intro h2 {
+    letter-spacing: 5px;
+  }
+
+  .logo-symbol {
+    width: 75px;
+    height: 75px;
+  }
+}
 
-    .admin-item-actions button{
-        flex:1;
-    }
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="nav">
+<div class="background"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div id="particles"></div>
 
-<div class="logo">
-🚨 Emergency <span>Hamburg RP</span>
-</div>
+<!-- INTRO SCREEN -->
 
-<div class="nav-buttons">
-<button class="btn-dark" onclick="openAdd()">＋ Přidat server</button>
-<button class="btn-red" onclick="openLogin()">🔐 Administrace</button>
-</div>
+<section class="intro" id="intro">
+  <div class="intro-content">
 
-</div>
-</header>
+    <div class="logo-symbol">✦</div>
 
-<main class="container">
+    <div class="eyebrow">THE ROLEPLAY EXPERIENCE</div>
 
-<section class="hero">
+    <h1>HORIZON</h1>
+    <h2>ROLEPLAY CZ/SK</h2>
 
-<div class="badge">🇩🇪 EMERGENCY HAMBURG RP</div>
+    <p class="intro-description">
+      Každý příběh začíná jedním rozhodnutím.
+      Objev komunitu Horizon RP a vstup do světa,
+      kde se tvoří vlastní příběhy.
+    </p>
 
-<h1>Server <span>List</span></h1>
+    <button class="enter-btn" onclick="enterSite()">
+      VSTOUPIT DO HORIZON
+      <span>→</span>
+    </button>
 
-<p>
-Najdi Emergency Hamburg RP server, připoj se ke komunitě
-a ohodnoť server. Vlastní server může přidat každý.
-</p>
+  </div>
 
+  <div class="scroll-hint">DISCOVER THE EXPERIENCE ↓</div>
 </section>
 
-<div class="stats">
-<div class="stat">
-<strong id="serverCount">2</strong>
-<span>Serverů</span>
-</div>
+<!-- MAIN WEBSITE -->
 
-<div class="stat">
-<strong id="playerCount">90</strong>
-<span>Hráčů online</span>
-</div>
+<main id="main">
 
-<div class="stat">
-<strong>⭐</strong>
-<span>Hodnocení serverů</span>
-</div>
-</div>
+  <nav class="navbar">
+    <a href="#svet" class="nav-logo">HORIZON<span>.</span></a>
 
-<section>
+    <div class="nav-links">
+      <a href="#svet">O SERVERU</a>
+      <a href="#pravidla">PRAVIDLA</a>
+      <a href="#tym">TÝM</a>
+      <a class="nav-discord" href="https://discord.gg/horizonrpczsk" target="_blank" rel="noopener noreferrer">
+        DISCORD ↗
+      </a>
+    </div>
+  </nav>
 
-<div class="section-title">
-<h2>📢 Oznámení</h2>
-<p>Nejnověji přidané servery</p>
-</div>
+  <!-- WELCOME -->
 
-<div class="announcements" id="announcements"></div>
+  <section class="section welcome" id="svet">
+    <div class="welcome-content reveal">
 
-</section>
+      <div class="section-label">01 / WELCOME TO HORIZON</div>
 
-<section>
+      <h2 class="section-title">
+        VÍTEJ VE SVĚTĚ<br>
+        <span>HORIZON RP.</span>
+      </h2>
 
-<div class="section-title">
-<h2>🌍 Servery</h2>
-<p>Vyber zemi nebo vyhledej server</p>
-</div>
+      <p class="section-text">
+        Horizon RP CZ/SK je komunitní Roleplay projekt
+        zaměřený na společné zážitky, komunikaci
+        a vytváření vlastních příběhů.
+        Připoj se ke komunitě a objev, co tě čeká.
+      </p>
 
-<div class="controls">
-<input
-    class="search"
-    id="search"
-    placeholder="🔎 Hledat server..."
-    oninput="renderServers()"
->
+      <div class="stats">
+        <div class="stat">
+          <strong>99</strong>
+          <span>ONLINE VE SCREENSHOTU</span>
+        </div>
 
-<button class="btn-dark" onclick="setSort('rating')">
-⭐ Nejlépe hodnocené
-</button>
+        <div class="stat">
+          <strong>CZ / SK</strong>
+          <span>KOMUNITA</span>
+        </div>
 
-<button class="btn-dark" onclick="setSort('players')">
-👥 Nejvíce hráčů
-</button>
-</div>
+        <div class="stat">
+          <strong>RP</strong>
+          <span>ROLEPLAY</span>
+        </div>
+      </div>
 
-<div class="country-list">
+      <p style="font-size:10px;color:#777d95;margin-top:15px;">
+        Počet online je údaj zachycený v dodaném screenshotu,
+        nikoliv živá statistika.
+      </p>
 
-<button class="active" onclick="setCountry('ALL',this)">🌍 Vše</button>
-<button onclick="setCountry('CZ',this)">🇨🇿 Česko</button>
-<button onclick="setCountry('SK',this)">🇸🇰 Slovensko</button>
-<button onclick="setCountry('DE',this)">🇩🇪 Německo</button>
-<button onclick="setCountry('AT',this)">🇦🇹 Rakousko</button>
-<button onclick="setCountry('PL',this)">🇵🇱 Polsko</button>
-<button onclick="setCountry('HU',this)">🇭🇺 Maďarsko</button>
-<button onclick="setCountry('CH',this)">🇨🇭 Švýcarsko</button>
-<button onclick="setCountry('FR',this)">🇫🇷 Francie</button>
-<button onclick="setCountry('IT',this)">🇮🇹 Itálie</button>
-<button onclick="setCountry('GB',this)">🇬🇧 Velká Británie</button>
-<button onclick="setCountry('US',this)">🇺🇸 USA</button>
-<button onclick="setCountry('NL',this)">🇳🇱 Nizozemsko</button>
-<button onclick="setCountry('BE',this)">🇧🇪 Belgie</button>
-<button onclick="setCountry('DK',this)">🇩🇰 Dánsko</button>
-<button onclick="setCountry('SE',this)">🇸🇪 Švédsko</button>
-<button onclick="setCountry('NO',this)">🇳🇴 Norsko</button>
-<button onclick="setCountry('FI',this)">🇫🇮 Finsko</button>
-<button onclick="setCountry('ES',this)">🇪🇸 Španělsko</button>
-<button onclick="setCountry('PT',this)">🇵🇹 Portugalsko</button>
-<button onclick="setCountry('RO',this)">🇷🇴 Rumunsko</button>
-<button onclick="setCountry('BG',this)">🇧🇬 Bulharsko</button>
-<button onclick="setCountry('HR',this)">🇭🇷 Chorvatsko</button>
-<button onclick="setCountry('SI',this)">🇸🇮 Slovinsko</button>
+    </div>
+  </section>
 
-</div>
+  <!-- FEATURES -->
 
-<div class="servers" id="servers"></div>
+  <section class="section">
+    <div class="reveal">
+      <div class="section-label">02 / EXPERIENCE</div>
+      <h2 class="section-title">CO TĚ ČEKÁ <span>?</span></h2>
+      <p class="section-text">
+        Poznej jednotlivé části komunity a její pravidla.
+      </p>
+    </div>
 
-</section>
+    <div class="cards">
 
-<!-- ADMIN DASHBOARD -->
+      <div class="card reveal">
+        <div class="card-icon">🎭</div>
+        <h3>Roleplay svět</h3>
+        <p>
+          Vytvářej vlastní příběhy, komunikuj s ostatními
+          a respektuj pravidla herního prostředí.
+        </p>
+      </div>
 
-<section class="admin-dashboard" id="adminDashboard">
+      <div class="card reveal">
+        <div class="card-icon">🛡️</div>
+        <h3>Admin-Team</h3>
+        <p>
+          Moderátorský tým a vedení komunity,
+          které se věnuje správě a pravidlům serveru.
+        </p>
+      </div>
 
-<div class="admin-head">
+      <div class="card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>CZ / SK komunita</h3>
+        <p>
+          Prostor pro české a slovenské hráče,
+          komunikaci a společné zážitky.
+        </p>
+      </div>
 
-<h2>🔐 ADMIN MODE</h2>
+    </div>
+  </section>
 
-<p>
-Jsi přihlášen jako <b>Dolkys</b>. Zde můžeš spravovat servery.
-</p>
+  <!-- RULES -->
 
-<br>
+  <section class="section" id="pravidla">
+    <div class="reveal">
+      <div class="section-label">03 / COMMUNITY RULES</div>
+      <h2 class="section-title">PRAVIDLA <span>KOMUNITY</span></h2>
+      <p class="section-text">
+        Základní přehled oblastí pravidel podle
+        dodaných screenshotů. Úplné a aktuální znění
+        najdeš na Discordu.
+      </p>
+    </div>
 
-<div class="admin-actions">
-<button class="btn-red" onclick="openAdd()">＋ Přidat server</button>
-<button class="btn-dark" onclick="logout()">Odhlásit administraci</button>
-</div>
+    <div class="rules-list">
 
-</div>
+      <div class="rule reveal">
+        <span class="rule-number">01</span>
+        <span>Respekt a slušná komunikace</span>
+      </div>
 
-<div class="admin-list" id="adminList"></div>
+      <div class="rule reveal">
+        <span class="rule-number">02</span>
+        <span>Dodržování pravidel Roleplay</span>
+      </div>
 
-</section>
+      <div class="rule reveal">
+        <span class="rule-number">03</span>
+        <span>Pravidla chování hráčů</span>
+      </div>
+
+      <div class="rule reveal">
+        <span class="rule-number">04</span>
+        <span>Pravidla vozidel a jejich používání</span>
+      </div>
+
+      <div class="rule reveal">
+        <span class="rule-number">05</span>
+        <span>Pravidla frakcí a jejich fungování</span>
+      </div>
+
+      <div class="rule reveal">
+        <span class="rule-number">06</span>
+        <span>Discord pravidla a pokyny moderátorů</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM -->
+
+  <section class="section" id="tym">
+    <div class="reveal">
+      <div class="section-label">04 / STAFF TEAM</div>
+      <h2 class="section-title">LIDÉ ZA <span>HORIZON</span></h2>
+      <p class="section-text">
+        Admin-Team se stará o komunitu, moderaci
+        a chod serveru. Aktuální seznam členů
+        najdeš přímo na Discordu.
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card reveal">
+        <div class="team-avatar">👑</div>
+        <h3>Vedení</h3>
+        <p>Správa a organizace projektu</p>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">🛡️</div>
+        <h3>Administrátoři</h3>
+        <p>Moderace a dohled nad komunitou</p>
+      </div>
+
+      <div class="team-card reveal">
+        <div class="team-avatar">⚙️</div>
+        <h3>Podpora</h3>
+        <p>Pomoc členům a řešení situací</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DISCORD -->
+
+  <section class="section">
+    <div class="discord-box reveal">
+
+      <div class="section-label">05 / JOIN THE COMMUNITY</div>
+
+      <h2>TVŮJ PŘÍBĚH<br>ZAČÍNÁ <span style="color:#8996ff;">TADY.</span></h2>
+
+      <p>
+        Připoj se k Horizon RP CZ/SK.<br>
+        Vstup do komunity a poznej ostatní hráče.
+      </p>
+
+      <a class="discord-button"
+         href="https://discord.gg/horizonrpczsk"
+         target="_blank"
+         rel="noopener noreferrer">
+        PŘIPOJIT SE NA DISCORD ↗
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <strong>HORIZON RP CZ/SK</strong><br>
+    Neoficiální komunitní prezentační web.<br>
+    © 2026 Horizon RP. Všechna práva vyhrazena.
+  </footer>
 
 </main>
 
-<footer>
-Emergency Hamburg RP Server List • GitHub Pages
-</footer>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-<div class="modal-box">
-
-<button class="close" onclick="closeModal('loginModal')">×</button>
-
-<h2>🔐 Administrace</h2>
-
-<div class="form">
-
-<label>
-Uživatelské jméno
-<input id="loginUser" autocomplete="username" placeholder="Uživatelské jméno">
-</label>
-
-<label>
-Heslo
-<input id="loginPass" type="password" autocomplete="current-password" placeholder="Heslo">
-</label>
-
-<button class="btn-red" onclick="login()">Přihlásit se</button>
-
-<p id="loginError" style="color:#ff4d4d;font-size:12px;"></p>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ADD SERVER MODAL -->
-
-<div class="modal" id="serverModal">
-
-<div class="modal-box">
-
-<button class="close" onclick="closeModal('serverModal')">×</button>
-
-<h2 id="serverModalTitle">＋ Přidat server</h2>
-
-<div class="form">
-
-<label>
-Název serveru
-<input id="serverName" placeholder="Např. Czech RP">
-</label>
-
-<label>
-Oblast / vlastník
-<input id="serverOwner" placeholder="Např. Goodryk">
-</label>
-
-<label>
-Popis serveru
-<textarea id="serverDesc" placeholder="Napiš něco o serveru..."></textarea>
-</label>
-
-<label>
-🌍 Země
-<select id="serverCountry">
-
-<option value="CZ">🇨🇿 Česko</option>
-<option value="SK">🇸🇰 Slovensko</option>
-<option value="DE">🇩🇪 Německo</option>
-<option value="AT">🇦🇹 Rakousko</option>
-<option value="PL">🇵🇱 Polsko</option>
-<option value="HU">🇭🇺 Maďarsko</option>
-<option value="CH">🇨🇭 Švýcarsko</option>
-<option value="FR">🇫🇷 Francie</option>
-<option value="IT">🇮🇹 Itálie</option>
-<option value="GB">🇬🇧 Velká Británie</option>
-<option value="US">🇺🇸 USA</option>
-<option value="NL">🇳🇱 Nizozemsko</option>
-<option value="BE">🇧🇪 Belgie</option>
-<option value="DK">🇩🇰 Dánsko</option>
-<option value="SE">🇸🇪 Švédsko</option>
-<option value="NO">🇳🇴 Norsko</option>
-<option value="FI">🇫🇮 Finsko</option>
-<option value="ES">🇪🇸 Španělsko</option>
-<option value="PT">🇵🇹 Portugalsko</option>
-<option value="RO">🇷🇴 Rumunsko</option>
-<option value="BG">🇧🇬 Bulharsko</option>
-<option value="HR">🇭🇷 Chorvatsko</option>
-<option value="SI">🇸🇮 Slovinsko</option>
-
-</select>
-</label>
-
-<label>
-👥 Počet hráčů online
-<input id="serverPlayers" type="number" min="0" value="0">
-</label>
-
-<label>
-🔗 Odkaz na Discord / server
-<input id="serverLink" type="url" placeholder="https://discord.gg/...">
-</label>
-
-<button class="btn-red" onclick="saveServer()">💾 Uložit server</button>
-
-</div>
-
-</div>
-
-</div>
-
-
 <script>
 
-const FLAGS = {
-CZ:"🇨🇿",
-SK:"🇸🇰",
-DE:"🇩🇪",
-AT:"🇦🇹",
-PL:"🇵🇱",
-HU:"🇭🇺",
-CH:"🇨🇭",
-FR:"🇫🇷",
-IT:"🇮🇹",
-GB:"🇬🇧",
-US:"🇺🇸",
-NL:"🇳🇱",
-BE:"🇧🇪",
-DK:"🇩🇰",
-SE:"🇸🇪",
-NO:"🇳🇴",
-FI:"🇫🇮",
-ES:"🇪🇸",
-PT:"🇵🇹",
-RO:"🇷🇴",
-BG:"🇧🇬",
-HR:"🇭🇷",
-SI:"🇸🇮"
-};
+/* PARTICLES */
 
-const COUNTRY_NAMES = {
-CZ:"Česko",
-SK:"Slovensko",
-DE:"Německo",
-AT:"Rakousko",
-PL:"Polsko",
-HU:"Maďarsko",
-CH:"Švýcarsko",
-FR:"Francie",
-IT:"Itálie",
-GB:"Velká Británie",
-US:"USA",
-NL:"Nizozemsko",
-BE:"Belgie",
-DK:"Dánsko",
-SE:"Švédsko",
-NO:"Norsko",
-FI:"Finsko",
-ES:"Španělsko",
-PT:"Portugalsko",
-RO:"Rumunsko",
-BG:"Bulharsko",
-HR:"Chorvatsko",
-SI:"Slovinsko"
-};
+const particleContainer = document.getElementById("particles");
 
+for (let i = 0; i < 45; i++) {
+  const particle = document.createElement("div");
+  particle.className = "particle";
 
-/*
-========================================
-ZÁKLADNÍ SERVERSKÁ DATA
-========================================
-*/
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.animationDuration = (8 + Math.random() * 15) + "s";
+  particle.style.animationDelay = (Math.random() * 15) + "s";
+  particle.style.width = (2 + Math.random() * 3) + "px";
+  particle.style.height = particle.style.width;
 
-const defaultServers = [
-
-{
-    id:"czech-rp",
-    name:"Czech RP",
-    owner:"Goodryk",
-    desc:"Česká Emergency Hamburg RP komunita.",
-    country:"CZ",
-    players:41,
-    link:"https://discord.gg/3zjGW9RKr9",
-    votes:[3,3,3,3,3,3],
-    created:Date.now()
-},
-
-{
-    id:"black-nova",
-    name:"Black Nova Community",
-    owner:"Black Nova",
-    desc:"Emergency Hamburg RP komunitní server.",
-    country:"CZ",
-    players:49,
-    link:"https://disboard.org/cs/server/1525564378777256117",
-    votes:[],
-    created:Date.now()-1000
+  particleContainer.appendChild(particle);
 }
 
-];
+/* ENTER WEBSITE */
 
+function enterSite() {
+  const intro = document.getElementById("intro");
+  const main = document.getElementById("main");
 
-/*
-========================================
-DATA
-========================================
-*/
+  intro.style.transition = "opacity .8s ease, transform .8s ease";
+  intro.style.opacity = "0";
+  intro.style.transform = "scale(1.04)";
 
-let stored = localStorage.getItem("ehServers");
-
-let servers;
-
-if(stored){
-    try{
-        servers = JSON.parse(stored);
-    }catch(e){
-        servers = defaultServers;
-    }
-}else{
-    servers = defaultServers;
-    localStorage.setItem("ehServers",JSON.stringify(servers));
-}
-
-servers = servers.map(s => ({
-    ...s,
-    votes:Array.isArray(s.votes) ? s.votes : [],
-    players:Number(s.players)||0
-}));
-
-let selectedCountry = "ALL";
-let sortMode = "new";
-let editingId = null;
-
-
-/*
-========================================
-MODALS
-========================================
-*/
-
-function openModal(id){
-    document.getElementById(id).classList.add("show");
-}
-
-function closeModal(id){
-    document.getElementById(id).classList.remove("show");
-}
-
-function openLogin(){
-    document.getElementById("loginUser").value="";
-    document.getElementById("loginPass").value="";
-    document.getElementById("loginError").textContent="";
-    openModal("loginModal");
-}
-
-function openAdd(){
-
-    editingId = null;
-
-    document.getElementById("serverModalTitle").textContent="＋ Přidat server";
-
-    document.getElementById("serverName").value="";
-    document.getElementById("serverOwner").value="";
-    document.getElementById("serverDesc").value="";
-    document.getElementById("serverCountry").value="CZ";
-    document.getElementById("serverPlayers").value="0";
-    document.getElementById("serverLink").value="";
-
-    openModal("serverModal");
-}
-
-
-/*
-========================================
-LOGIN
-========================================
-*/
-
-function login(){
-
-    const user = document.getElementById("loginUser").value.trim();
-    const pass = document.getElementById("loginPass").value;
-
-    if(user === "Dolkys" && pass === "Doljan4200"){
-
-        localStorage.setItem("adminLogged","true");
-
-        closeModal("loginModal");
-
-        showAdmin();
-
-        alert("✅ Administrace byla úspěšně zapnuta.");
-
-    }else{
-
-        document.getElementById("loginError").textContent =
-        "❌ Špatné uživatelské jméno nebo heslo.";
-
-    }
-}
-
-function logout(){
-
-    localStorage.removeItem("adminLogged");
-
-    document.getElementById("adminDashboard").classList.remove("show");
-
-    alert("Administrace byla odhlášena.");
+  setTimeout(() => {
+    intro.style.display = "none";
+    main.classList.add("visible");
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-}
-
-function isAdmin(){
-    return localStorage.getItem("adminLogged") === "true";
-}
-
-function showAdmin(){
-
-    if(!isAdmin()) return;
-
-    document.getElementById("adminDashboard").classList.add("show");
-
-    renderAdmin();
-
-    document.getElementById("adminDashboard").scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-
-/*
-========================================
-SAVE SERVER
-========================================
-*/
-
-function saveServer(){
-
-    const name = document.getElementById("serverName").value.trim();
-    const owner = document.getElementById("serverOwner").value.trim();
-    const desc = document.getElementById("serverDesc").value.trim();
-    const country = document.getElementById("serverCountry").value;
-    const players = Math.max(0,Number(document.getElementById("serverPlayers").value)||0);
-    const link = document.getElementById("serverLink").value.trim();
-
-    if(!name){
-        alert("❌ Zadej název serveru.");
-        return;
-    }
-
-    if(!link){
-        alert("❌ Zadej odkaz na server.");
-        return;
-    }
-
-    if(!/^https?:\/\//i.test(link)){
-        alert("❌ Odkaz musí začínat https://");
-        return;
-    }
-
-    if(editingId){
-
-        const server = servers.find(s => s.id === editingId);
-
-        if(server){
-
-            server.name=name;
-            server.owner=owner;
-            server.desc=desc;
-            server.country=country;
-            server.players=players;
-            server.link=link;
-
-        }
-
-    }else{
-
-        servers.unshift({
-
-            id:"server-"+Date.now(),
-
-            name,
-            owner:owner || "Neuvedeno",
-
-            desc:desc || "Emergency Hamburg RP server.",
-
-            country,
-
-            players,
-
-            link,
-
-            votes:[],
-
-            created:Date.now()
-
-        });
-
-    }
-
-    saveData();
-
-    closeModal("serverModal");
-
-    renderServers();
-    renderAnnouncements();
-    renderAdmin();
-
-    alert("✅ Server byl uložen.");
-
-}
-
-
-/*
-========================================
-EDIT
-========================================
-*/
-
-function editServer(id){
-
-    if(!isAdmin()) return;
-
-    const s = servers.find(x => x.id === id);
-
-    if(!s) return;
-
-    editingId=id;
-
-    document.getElementById("serverModalTitle").textContent="✏️ Upravit server";
-
-    document.getElementById("serverName").value=s.name;
-    document.getElementById("serverOwner").value=s.owner || "";
-    document.getElementById("serverDesc").value=s.desc || "";
-    document.getElementById("serverCountry").value=s.country;
-    document.getElementById("serverPlayers").value=s.players || 0;
-    document.getElementById("serverLink").value=s.link || "";
-
-    openModal("serverModal");
-}
-
-
-/*
-========================================
-DELETE
-========================================
-*/
-
-function deleteServer(id){
-
-    if(!isAdmin()) return;
-
-    const s=servers.find(x=>x.id===id);
-
-    if(!s) return;
-
-    if(!confirm("Opravdu chceš smazat server \""+s.name+"\"?")){
-        return;
-    }
-
-    servers=servers.filter(x=>x.id!==id);
-
-    saveData();
-
-    renderServers();
-    renderAnnouncements();
-    renderAdmin();
-
-}
-
-
-/*
-========================================
-VOTES
-========================================
-*/
-
-function vote(id,stars){
-
-    const server=servers.find(s=>s.id===id);
-
-    if(!server) return;
-
-    if(!Array.isArray(server.votes)){
-        server.votes=[];
-    }
-
-    server.votes.push(stars);
-
-    saveData();
-
-    renderServers();
-
-    alert("⭐ Děkujeme za hodnocení "+stars+"/5!");
-
-}
-
-
-/*
-========================================
-RATING
-========================================
-*/
-
-function getRating(server){
-
-    const votes=Array.isArray(server.votes) ? server.votes : [];
-
-    if(votes.length===0) return 0;
-
-    return votes.reduce((a,b)=>a+b,0)/votes.length;
-}
-
-function starsHTML(rating){
-
-    let html="";
-
-    for(let i=1;i<=5;i++){
-
-        html += i<=Math.round(rating) ? "★" : "☆";
-
-    }
-
-    return html;
-}
-
-
-/*
-========================================
-SERVERS
-========================================
-*/
-
-function renderServers(){
-
-    const container=document.getElementById("servers");
-
-    const search=document.getElementById("search").value.toLowerCase();
-
-    let filtered=servers.filter(s=>{
-
-        const countryOK =
-            selectedCountry==="ALL" ||
-            s.country===selectedCountry;
-
-        const searchOK =
-            s.name.toLowerCase().includes(search) ||
-            (s.owner||"").toLowerCase().includes(search) ||
-            (s.desc||"").toLowerCase().includes(search);
-
-        return countryOK && searchOK;
-
+      top: 0,
+      behavior: "instant"
     });
 
-    if(sortMode==="rating"){
-
-        filtered.sort((a,b)=>getRating(b)-getRating(a));
-
-    }else if(sortMode==="players"){
-
-        filtered.sort((a,b)=>b.players-a.players);
-
-    }else{
-
-        filtered.sort((a,b)=>(b.created||0)-(a.created||0));
-
-    }
-
-    if(filtered.length===0){
-
-        container.innerHTML=
-        `<div class="empty">
-            🔎 Žádný server nebyl nalezen.
-        </div>`;
-
-        return;
-    }
-
-    container.innerHTML=filtered.map((s,index)=>{
-
-        const rating=getRating(s);
-
-        const votes=s.votes?.length || 0;
-
-        const isNew=index===0 && sortMode==="new";
-
-        return `
-
-        <article class="server">
-
-            <div class="server-top">
-
-                <div>
-
-                    <div class="server-name">
-                        ${escapeHTML(s.name)}
-                    </div>
-
-                    <div class="country">
-                        ${FLAGS[s.country]||"🌍"}
-                        ${COUNTRY_NAMES[s.country]||"Neznámá země"}
-                    </div>
-
-                </div>
-
-                ${isNew ? `<span class="new">NOVÉ</span>` : ""}
-
-            </div>
-
-            <div class="server-desc">
-                ${escapeHTML(s.desc || "")}
-            </div>
-
-            <div class="server-info">
-
-                <span class="info">
-                    👤 ${escapeHTML(s.owner||"Neuvedeno")}
-                </span>
-
-                <span class="info">
-                    👥 ${s.players} hráčů
-                </span>
-
-            </div>
-
-            <div class="rating">
-                ${starsHTML(rating)}
-            </div>
-
-            <div class="rating-info">
-                ${rating ? rating.toFixed(1) : "0.0"} / 5
-                • ${votes} hlasů
-            </div>
-
-            <div class="server-buttons">
-
-                <a
-                    class="btn btn-red"
-                    href="${safeURL(s.link)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🔗 Připojit
-                </a>
-
-            </div>
-
-            <div class="vote-area">
-
-                <p>Ohodnoť tento server:</p>
-
-                <div class="vote-buttons">
-
-                    <button onclick="vote('${s.id}',1)">1★</button>
-                    <button onclick="vote('${s.id}',2)">2★</button>
-                    <button onclick="vote('${s.id}',3)">3★</button>
-                    <button onclick="vote('${s.id}',4)">4★</button>
-                    <button onclick="vote('${s.id}',5)">5★</button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-        `;
-
-    }).join("");
-
+    revealElements();
+  }, 750);
 }
 
-
-/*
-========================================
-ANNOUNCEMENTS
-========================================
-*/
-
-function renderAnnouncements(){
-
-    const box=document.getElementById("announcements");
-
-    const newest=[...servers]
-        .sort((a,b)=>(b.created||0)-(a.created||0))
-        .slice(0,5);
-
-    if(newest.length===0){
-
-        box.innerHTML=
-        `<div class="announcement">
-            <b>Zatím nejsou žádná oznámení.</b>
-        </div>`;
-
-        return;
-    }
-
-    box.innerHTML=newest.map((s,i)=>`
-
-        <div class="announcement">
-
-            <b>
-                🆕 Nový server: ${escapeHTML(s.name)}
-            </b>
-
-            <div style="color:#aaa;font-size:12px;">
-                ${FLAGS[s.country]||"🌍"}
-                ${COUNTRY_NAMES[s.country]||""}
-                • 👥 ${s.players} hráčů
-            </div>
-
-            <small>
-                Server byl přidán do seznamu.
-            </small>
-
-        </div>
-
-    `).join("");
-
-}
-
-
-/*
-========================================
-ADMIN LIST
-========================================
-*/
-
-function renderAdmin(){
-
-    const list=document.getElementById("adminList");
-
-    if(!isAdmin()){
-        list.innerHTML="";
-        return;
-    }
-
-    if(servers.length===0){
-
-        list.innerHTML=
-        `<div class="empty">Žádné servery.</div>`;
-
-        return;
-    }
-
-    list.innerHTML=servers.map(s=>`
-
-        <div class="admin-item">
-
-            <div class="admin-item-info">
-
-                <b>
-                    ${FLAGS[s.country]||"🌍"}
-                    ${escapeHTML(s.name)}
-                </b>
-
-                <small>
-                    ${s.players} hráčů •
-                    ${getRating(s).toFixed(1)} ⭐ •
-                    ${s.votes?.length||0} hlasů
-                </small>
-
-            </div>
-
-            <div class="admin-item-actions">
-
-                <button
-                    class="btn-dark"
-                    onclick="editServer('${s.id}')"
-                >
-                    ✏️ Upravit
-                </button>
-
-                <button
-                    class="btn-red"
-                    onclick="deleteServer('${s.id}')"
-                >
-                    🗑️ Smazat
-                </button>
-
-            </div>
-
-        </div>
-
-    `).join("");
-
-}
-
-
-/*
-========================================
-FILTERS
-========================================
-*/
-
-function setCountry(country,button){
-
-    selectedCountry=country;
-
-    document
-        .querySelectorAll(".country-list button")
-        .forEach(b=>b.classList.remove("active"));
-
-    button.classList.add("active");
-
-    renderServers();
-}
-
-function setSort(mode){
-
-    sortMode=mode;
-
-    renderServers();
-
-}
-
-
-/*
-========================================
-STATS
-========================================
-*/
-
-function renderStats(){
-
-    document.getElementById("serverCount").textContent=servers.length;
-
-    const total=servers.reduce(
-        (sum,s)=>sum+(Number(s.players)||0),
-        0
-    );
-
-    document.getElementById("playerCount").textContent=total;
-
-}
-
-
-/*
-========================================
-DATA SAVE
-========================================
-*/
-
-function saveData(){
-
-    localStorage.setItem(
-        "ehServers",
-        JSON.stringify(servers)
-    );
-
-    renderStats();
-
-}
-
-
-/*
-========================================
-SECURITY / HTML ESCAPE
-========================================
-*/
-
-function escapeHTML(value){
-
-    return String(value??"")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-function safeURL(url){
-
-    const value=String(url||"").trim();
-
-    if(/^https?:\/\//i.test(value)){
-
-        return value
-            .replace(/&/g,"&amp;")
-            .replace(/"/g,"&quot;");
-
-    }
-
-    return "#";
-
-}
-
-
-/*
-========================================
-START
-========================================
-*/
-
-renderStats();
-renderServers();
-renderAnnouncements();
-
-if(isAdmin()){
-    document.getElementById("adminDashboard").classList.add("show");
-    renderAdmin();
+/* SCROLL ANIMATIONS */
+
+function revealElements() {
+  const elements = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  elements.forEach((element) => observer.observe(element));
 }
 
 </script>
